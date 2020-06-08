@@ -167,3 +167,26 @@ c+2c+3c+⋯+(n−1)c times
 Time complexity is c*[n*(n-1)/2]
 O(n*2)
 ```
+
+### Nested For-loop With Index Modification
+
+```
+for (var i=0; i<n; i++){
+    i*=2;
+    for (var j=0; j<i; j++){
+        // Statement(s) that take(s) constant time
+    }
+}
+```
+
+if outer loop -> 0 then inner loop runs 0
+outerloop ->1 , inner loop ->2
+outerloop->3 , innerloop-> 6
+outerloop->7 , innerloop ->14
+outer loop -> n-1 , innerloop 2(n-1)
+
+```
+Time complexity is
+outerloop runs n times , roughly inner loops run n power 2 times as i is getting doubled so
+O(n power 2)
+```
