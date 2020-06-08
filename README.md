@@ -274,7 +274,11 @@ for (var i = n; i >= 1; i -= 3) {
 console.log(sum);
 ```
 so time complexity is 
+
+
 ![first](https://latex.codecogs.com/gif.latex?1&plus;1&plus;1&plus;1&plus;%281&plus;%5Cfrac%7Bn%7D%7B3%7D%29&plus;%28%5Cfrac%7Bn%7D%7B3%7D%29&plus;%28%5Cfrac%7Bn%7D%7B3%7D%29&plus;%28%5Cfrac%7Bn%7D%7B3%7D%29&plus;%28%5Cfrac%7Bn%7D%7B3%7D%29%282&plus;%5Cfrac%7Bn%7D%7B3%7D%29&plus;%28%5Cfrac%7Bn%7D%7B3%7D%29%281&plus;%5Cfrac%7Bn%7D%7B3%7D%29&plus;%28%5Cfrac%7Bn%7D%7B3%7D%29%281&plus;%5Cfrac%7Bn%7D%7B3%7D%29&plus;1)
 
-so removing constans and lower order coefficint it is 
+
+
+so removing constants and lower order coefficint it is 
 O(n power 2)
