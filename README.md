@@ -68,3 +68,26 @@ Time complexity is
 1+1+1+6n+4 + n(6m+4) + 3nm +2
 9nm+10n+9
 ```
+
+### Big O notation
+
+Above process is cumbersome
+, so for calculationg time complexity we use bog o notation
+In big o notation
+
+```
+1.Dropping the multiplicative constants with all terms.
+2.Dropping all but the highest order term.
+
+n2 +5n+ 5 = o(n2)
+```
+
+```
+Sometimes the constant coefficients do become important. For example, consider algorithms A and B that have a worst-case running time of 100000n + 4 and 10n + 6, respectively. Asymptotically, both are O(n)O(n). However, the worst-case running time for algorithm B is numerically better than A.
+```
+
+### General Tips
+
+1. Every time a list or array gets iterated over c \times lengthc×length times, it is most likely in O(n)O(n) time.
+2. When you see a problem where the number of elements in the problem space gets halved each time, it will most probably be in O(log n)O(logn) runtime.
+3. Whenever you have a single nested loop, the problem is most likely in quadratic time.
