@@ -190,3 +190,19 @@ Time complexity is
 outerloop runs n times , roughly inner loops run n power 2 times as i is getting doubled so
 O(n power 2)
 ```
+
+### Loops with log(n) time complexity
+
+```
+i = //constant
+n = //constant
+k = //constant
+while (i < n){
+    i*=k;
+    // Statement(s) that take(s) constant time
+}
+```
+
+Explanation: A loop statement that multiplies/divides the loop variable by a constant such as the above takes \log_k(n)log
+​k
+​​ (n) time because the loop runs that many times. Let’s consider an example where n = 16, and k = 2:
