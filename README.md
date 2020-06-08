@@ -238,4 +238,4 @@ for (var i = 1; i < n; i += 3) {
 }
 ```
 
-![firstequation]https://latex.codecogs.com/gif.latex?%5Cfrac%7B2%7D%7B3%7D%20&plus;1
+![firstequation](https://latex.codecogs.com/gif.latex?%5Cfrac%7B2%7D%7B3%7D%20&plus;1)
