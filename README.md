@@ -91,3 +91,25 @@ Sometimes the constant coefficients do become important. For example, consider a
 1. Every time a list or array gets iterated over c \times lengthc×length times, it is most likely in O(n)O(n) time.
 2. When you see a problem where the number of elements in the problem space gets halved each time, it will most probably be in O(log n)O(logn) runtime.
 3. Whenever you have a single nested loop, the problem is most likely in quadratic time.
+
+### List of Important Complexities
+
+### 1. Simple for-loop with an increment of size 1
+
+```
+for (var x = 0; x < n; x++) {
+    //statement(s) that take constant time
+}
+```
+
+Time compllexity
+
+x = 0 - > 1
+x<n -> n+1
+x++ -> n
+
+```
+Time complexity is
+n+n+1+1 =  2n+2
+O(n)
+```
