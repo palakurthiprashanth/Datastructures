@@ -220,3 +220,22 @@ Time complexity is log n base K
 
 log 16 base 2 = 4
 ```
+
+### Big (O) of Nested Loop with Addition
+
+```
+const n = 10;
+const pie = 3.17;
+var sum = 0;
+
+
+for (var i = 1; i < n; i += 3) {
+    console.log(pie);
+    for (var j = 1; j < n; j += 2) {
+        sum = sum + 1;
+        console.log(sum);
+    }
+}
+```
+
+![firstequation]\frac{2}{3} +1 times
