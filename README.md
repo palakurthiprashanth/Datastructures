@@ -257,3 +257,24 @@ Removing All constants and lower order coefficients it is
 O(n power 2)
 ```
 
+### Big (O) of Nested Loop with Subtraction
+
+```
+const n = 10;
+const pie = 3.14;
+let sum = 0;
+
+
+for (var i = n; i >= 1; i -= 3) {
+    console.log(pie);
+    for (var j = n; j >= 0; j--) {
+        sum = sum + 1;
+    }
+}
+console.log(sum);
+```
+so time complexity is 
+![first](https://latex.codecogs.com/gif.latex?1&plus;1&plus;1&plus;1&plus;%281&plus;%5Cfrac%7Bn%7D%7B3%7D%29&plus;%28%5Cfrac%7Bn%7D%7B3%7D%29&plus;%28%5Cfrac%7Bn%7D%7B3%7D%29&plus;%28%5Cfrac%7Bn%7D%7B3%7D%29&plus;%28%5Cfrac%7Bn%7D%7B3%7D%29%282&plus;%5Cfrac%7Bn%7D%7B3%7D%29&plus;%28%5Cfrac%7Bn%7D%7B3%7D%29%281&plus;%5Cfrac%7Bn%7D%7B3%7D%29&plus;%28%5Cfrac%7Bn%7D%7B3%7D%29%281&plus;%5Cfrac%7Bn%7D%7B3%7D%29&plus;1)
+
+so removing constans and lower order coefficint it is 
+O(n power 2)
