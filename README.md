@@ -105,7 +105,9 @@ for (var x = 0; x < n; x++) {
 Time compllexity
 
 x = 0 - > 1
+
 x<n -> n+1
+   
 x++ -> n
 
 ```
