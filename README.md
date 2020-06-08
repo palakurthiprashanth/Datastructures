@@ -203,6 +203,20 @@ while (i < n){
 }
 ```
 
-Explanation: A loop statement that multiplies/divides the loop variable by a constant such as the above takes \log_k(n)log
-​k
+A loop statement that multiplies/divides the loop variable by a constant such as the above takes
+log (n) base K
 ​​ (n) time because the loop runs that many times. Let’s consider an example where n = 16, and k = 2:
+
+| count | i   |
+| ----- | --- |
+| 1     | 1   |
+| 2     | 2   |
+| 3     | 4   |
+| 4     | 8   |
+| 5     | 16  |
+
+```
+Time complexity is log n base K
+
+log 16 base 2 = 4
+```
