@@ -143,3 +143,27 @@ n(2m+2 + k) so
 ```
 Time complexity is O(nm)
 ```
+
+### Nested For-loop with dependent variables
+
+```
+for (var i=0; i<n; i++){
+    for (var j=0; j<i; j++){
+        //Statement(s) that take(s) constant time
+    }
+}
+```
+
+outer loop runs n times and inner loop runs i times
+Inner loop doesnt run in 1st iteration
+in 2nd iteration - > it runs 1 time
+3rd iteration - > 2 times
+4th iteration -> 3 times
+nth iteration -> n-1 times
+so
+c+2c+3c+⋯+(n−1)c times
+
+```
+Time complexity is c*[n*(n-1)/2]
+O(n*2)
+```
