@@ -113,3 +113,33 @@ Time complexity is
 n+n+1+1 =  2n+2
 O(n)
 ```
+
+### For-loop with increments of size k
+
+```
+for (var x = 0; x < n; x+=k) {
+    //statement(s) that take constant time
+}
+```
+
+Time complexity is
+
+2+n(2+c / k) = O(n)
+
+### Nested for loops
+
+```
+for (var=0; i<n; i++){
+    for (var=0; j<m; j++){
+        //Statement(s) that take(s) constant time
+    }
+}
+```
+
+Inner loop is 2m+2 + K
+outer loop runs n times so
+n(2m+2 + k) so
+
+```
+Time complexity is O(nm)
+```
