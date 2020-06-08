@@ -248,3 +248,12 @@ in inner loop
 j<n runs ![first](https://latex.codecogs.com/gif.latex?%5Cfrac%7Bn%7D%7B3%7D%20%5Cleft%281&plus;%5Cfrac%7Bn%7D%7B2%7D%5Cright%29) times
 j += 2 runs ![first](https://latex.codecogs.com/gif.latex?%5Cfrac%7Bn%7D%7B3%7D%20%5Cleft%28%5Cfrac%7Bn%7D%7B2%7D%5Cright%29) times
 
+so time complexity is 
+
+![first](https://latex.codecogs.com/gif.latex?1&plus;1&plus;1&plus;1&plus;%281&plus;%5Cfrac%7Bn%7D%7B3%7D%29&plus;%28%5Cfrac%7Bn%7D%7B3%7D%29&plus;%28%5Cfrac%7Bn%7D%7B3%7D%29&plus;%28%5Cfrac%7Bn%7D%7B3%7D%29%281&plus;%5Cfrac%7Bn%7D%7B2%7D%29&plus;%28%5Cfrac%7Bn%7D%7B3%7D%29%28%5Cfrac%7Bn%7D%7B2%7D%29&plus;%28%5Cfrac%7Bn%7D%7B3%7D%29%28%5Cfrac%7Bn%7D%7B2%7D%29&plus;%28%5Cfrac%7Bn%7D%7B3%7D%29%28%5Cfrac%7Bn%7D%7B2%7D%29)
+
+```
+Removing All constants and lower order coefficients it is 
+O(n power 2)
+```
+
