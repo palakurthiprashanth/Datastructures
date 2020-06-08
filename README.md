@@ -126,7 +126,20 @@ for (var x = 0; x < n; x+=k) {
 }
 ```
 
+consider this loop
+
+x=0  ==>  1
+
+x < n ==> as x is incrementing by k times so it will be k+2k+3k+....mk where m < n ,so value for x < n takes (n/k) + 1
+
+x+=k  => n/k
+
+and statements inside loop runs c (n/k)
+
 Time complexity is
+
+
+1+(n/k)+1 + (n/k) + (n/k) + c(n/k)
 
 2+n(2+c / k) = O(n)
 
