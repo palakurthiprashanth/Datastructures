@@ -245,4 +245,4 @@ i< n runs
 i+=3 runs runs ![firstequation](https://latex.codecogs.com/gif.latex?%5Cfrac%7Bn%7D%7B3%7D) times
 
 in inner loop 
-j<n runs [firstequation(https://latex.codecogs.com/gif.latex%5Cfrac%7Bn%7D%7B3%7D%20%5Cleft%281&plus;%5Cfrac%7Bn%7D%7B2%7D%5Cright%29)  times
+j<n runs ![firstequation](https://latex.codecogs.com/gif.latex%5Cfrac%7Bn%7D%7B3%7D%20%5Cleft%281&plus;%5Cfrac%7Bn%7D%7B2%7D%5Cright%29)  times
