@@ -8,6 +8,8 @@ There are so many algorithms , so we need to decide which algorithm is helpful b
 
 ### how can we evaluate time and space complexity
 
+### for single loop
+
 Need to calculate best case , worst case and average case
 so mostly not cosider primitive operations in anlysis like assignment.
 
@@ -40,4 +42,29 @@ so time complexitity is
 
 ```
 Time complexity is 6n+6
+```
+
+### for nested loop
+
+```
+var n = 5
+var m = 7
+var sum = 0
+for(var i = 0; i < n; i++)
+  for(var j = 0; j < m; j++)
+    sum += 1
+
+console.log(sum)
+```
+
+for(var i = 0; i < n; i++) - > 6n+4
+
+for(var j = 0; j < m; j++) - > as it is nested it will loop for every iteration so n (6m+4)
+sum += 1 - > n(3m)
+console.log(sum) - > 2
+
+```
+Time complexity is
+1+1+1+6n+4 + n(6m+4) + 3nm +2
+9nm+10n+9
 ```
