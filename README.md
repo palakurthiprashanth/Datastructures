@@ -299,3 +299,42 @@ so time complexity is
 
 so removing constants and lower order coefficint it is 
 O(n power 2)
+
+### Big (O) of Nested Loop with Multiplication
+```
+const n = 10;
+const pie = 3.14;
+let sum = 0;
+
+var i = 1;
+
+while (i < n) {
+    console.log(pie);
+    for (var j = 0; j < i; j++) {
+        sum = sum + 1;
+    }
+    i *= 2;
+
+}
+console.log(sum)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
