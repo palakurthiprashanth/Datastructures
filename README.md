@@ -94,6 +94,8 @@ Sometimes the constant coefficients do become important. For example, consider a
 
 ### List of Important Complexities
 
+Without Considering Constants.
+
 ### 1. Simple for-loop with an increment of size 1
 
 ```
