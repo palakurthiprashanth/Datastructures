@@ -171,3 +171,21 @@ nine
 ```
 
 Time complexity is O(n)
+
+### const vs var vs Let
+
+### const
+const is block scoped , once declared cannot be redeclared
+
+```
+//code will throw an error
+const pi=3.14
+console.log(pi)
+pi=3;
+
+
+```
+output
+TypeError: Assignment to constant variable.
+```
+```
