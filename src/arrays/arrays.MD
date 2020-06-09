@@ -313,6 +313,20 @@ function mergeArrays(arr1, arr2) {
 let arr1 = [1, 3, 4, 5];
 let arr2 = [2, 6, 7, 8];
 mergeArrays(arr1, arr2);
+```
+</p>
+</details>
 
+<details><summary>Challenge 2: solution with spread</summary>
+<p>
+
+
+```javascript
+function mergeArrays(arr1, arr2) {
+    return [...arr1, ...arr2].sort((a, b) => a - b);
+}
+
+console.log(mergeArrays([4,5,6],[-2,-1,0,7]))
+```
 </p>
 </details>
