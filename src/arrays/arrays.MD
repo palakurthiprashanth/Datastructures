@@ -209,4 +209,43 @@ output
 6
 ```
 The value of n outside the function scope remains the same regardless of what the value of n is inside the function scope.
-Also, as stated, variables can be redeclared using var:
+Also, as stated, variables can be redeclared using var
+
+### Let
+ES6 introduced let.
+let is block scoped , similar to const it cannot be redeclared
+
+```
+//code will throw an error
+let a=2;
+let a=3;
+```
+```
+output
+
+SyntaxError: Identifier 'a' has already been declared
+```
+
+```
+//code will throw an error
+function foo(n) {
+    if (n == 6) {
+        let num = 2;
+    }
+    console.log(num);
+}
+
+var n = 6;
+console.log(n);
+foo(6);
+```
+```
+output
+
+ReferenceError: num is not defined
+```
+
+```
+Above will work with var
+```
+Finally, variable declaration using let, const, or var depends on what scope you want. 
