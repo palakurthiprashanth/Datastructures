@@ -182,10 +182,31 @@ const is block scoped , once declared cannot be redeclared
 const pi=3.14
 console.log(pi)
 pi=3;
-
-
+```
 ```
 output
 TypeError: Assignment to constant variable.
 ```
+
+### var
+
+var is function scoped
+if declared outside fn it will be in global scope
+
 ```
+function foo(){
+   var n=6;
+   console.log(n);
+}
+
+var n=5;
+console.log(n);
+foo();
+```
+```
+output
+5
+6
+```
+The value of n outside the function scope remains the same regardless of what the value of n is inside the function scope.
+Also, as stated, variables can be redeclared using var:
