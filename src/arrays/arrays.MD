@@ -258,7 +258,7 @@ Challenge 1: Remove Even Integers From an Array
 
 #### yes, even hidden code blocks!
 
-```python
+```
 print("hello world!")
 ```
 
