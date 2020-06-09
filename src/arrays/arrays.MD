@@ -278,6 +278,5 @@ function removeEvenFilter(arr) {
   return result;
 }
 removeEvenFilter(arr);
-
-```
 </details>
+```
