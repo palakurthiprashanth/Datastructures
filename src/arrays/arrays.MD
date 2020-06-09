@@ -251,12 +251,11 @@ Above will work with var
 Finally, variable declaration using let, const, or var depends on what scope you want. 
 
 
-## collapsible markdown?
+## Challenges
 
 <details><summary>Challenge 1: Remove Even Integers From an Array</summary>
 <p>
 
-#### yes, even hidden code blocks!
 
 ```javascript
 //[1,2,4,5,10,6,3]  ==>  [1,5,3]
@@ -286,5 +285,8 @@ removeEvenFilter(arr);
 
 ```
 
+```
+In both case time complexity is O(n)
+```
 </p>
 </details>
