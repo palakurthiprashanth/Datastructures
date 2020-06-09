@@ -338,3 +338,28 @@ The sort() function in javascript compares the values as strings in lexicographi
 Time complexity
 The time complexity for this solution will be O(n log n )O(nlogn) since we are using the sort() function.
 ```
+
+<details><summary>Challenge 3: Find Two Numbers that Add up to "value"</summary>
+<p>
+
+```
+Brute force
+```
+
+```javascript
+function findSum(arr, value) {
+    for (var j =0; j<arr.length; j++) {
+       for (var k = j+1; k<arr.length; k++) {
+            if ((arr[j] + arr[k]) == value)
+                return [arr[j], arr[k]]
+        }
+    }
+    return false;
+}
+```
+
+```
+Time complexity is O(n power 2)
+```
+</p>
+</details>
