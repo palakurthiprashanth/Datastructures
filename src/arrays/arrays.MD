@@ -407,3 +407,37 @@ so in worst case scenario it is O(nlongn)
 ```
 </p>
 </details>
+
+<details><summary>Challenge 4: Array of Products of All Elements</summary>
+<p>
+
+
+```javascript
+function findProduct(arr) {
+  var res = [];
+  var index = 0;
+  var temp = 1;
+  debugger;
+  for (var i = 0; i < arr.length; i++) {
+    while (index < arr.length) {
+      if (i !== index) {
+        temp = temp * arr[index];
+      }
+      index++;
+    }
+    res.push(temp);
+    temp = 1;
+    index = 0;
+  }
+  //alert(res);
+}
+
+findProduct([1, 2, 3, 4]); // [24,12,8,6]
+```
+
+```
+Time complexity is 
+O(n power 2)
+```
+</p>
+</details>
