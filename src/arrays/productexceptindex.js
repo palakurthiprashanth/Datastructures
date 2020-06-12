@@ -1,8 +1,11 @@
 function findMinimum(arr) {
-  arr.sort(function(a, b) {
-    return a - b;
-  });
-  //alert(arr[0]);
-  return arr[0];
+  var min = arr[0];
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i] < min) {
+      min = arr[i];
+    }
+  }
+  //alert(min);
+  return min;
 }
 findMinimum([9, 2, 3, 6, -1]);

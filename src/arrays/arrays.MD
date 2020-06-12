@@ -500,3 +500,33 @@ O(nlogn)
 ```
 </p>
 </details>
+
+<details><summary>Challenge 5: Optimised</summary>
+<p>
+
+```
+In this instead of sort , we assume first elem is minimum and loop array compare element if less than min and update value.
+```
+
+```javascript
+function findMinimum(arr) {
+  var min = arr[0];
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i] < min) {
+      min = arr[i];
+    }
+  }
+  //alert(min);
+  return min;
+}
+findMinimum([9, 2, 3, 6, -1]);
+
+
+```
+
+```
+Time complexity is 
+O(n)
+```
+</p>
+</details>
