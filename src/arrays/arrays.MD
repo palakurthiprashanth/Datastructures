@@ -441,3 +441,40 @@ O(n power 2)
 ```
 </p>
 </details>
+
+<details><summary>Challenge 4: Optimized way</summary>
+<p>
+
+```
+In this way instead of nesting we seperate the loops 
+in first loop it is product to left side
+in second loop it is product to right side
+```
+
+```javascript
+function findProduct(arr) {
+  var temp = 1;
+  var product = [];
+  for (var i = 0; i < arr.length; i++) {
+    product[i] = temp;
+    temp = temp * arr[i];
+  }
+  temp = 1; // 1,1,3,12
+  for (var j = arr.length - 1; j > -1; j--) {
+    product[j] = product[j] * temp;
+    temp = temp * arr[j];
+  }
+  //alert(product);
+}
+
+findProduct([1, 3, 4, 5]);
+
+```
+
+```
+Time complexity is 
+n+n = 2n // remove constant so 
+O(n);
+```
+</p>
+</details>

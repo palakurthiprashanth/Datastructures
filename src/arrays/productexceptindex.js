@@ -1,20 +1,16 @@
 function findProduct(arr) {
-  var res = [];
-  var index = 0;
   var temp = 1;
-  debugger;
+  var product = [];
   for (var i = 0; i < arr.length; i++) {
-    while (index < arr.length) {
-      if (i !== index) {
-        temp = temp * arr[index];
-      }
-      index++;
-    }
-    res.push(temp);
-    temp = 1;
-    index = 0;
+    product[i] = temp;
+    temp = temp * arr[i];
   }
-  //alert(res);
+  temp = 1; // 1,1,3,12
+  for (var j = arr.length - 1; j > -1; j--) {
+    product[j] = product[j] * temp;
+    temp = temp * arr[j];
+  }
+  //alert(product);
 }
 
-findProduct([1, 2, 3, 4]); // [24,12,8,6]
+findProduct([1, 3, 4, 5]);
