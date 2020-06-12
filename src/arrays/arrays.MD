@@ -478,3 +478,25 @@ O(n);
 ```
 </p>
 </details>
+
+<details><summary>Challenge 5: Find Minimum Value in Array</summary>
+<p>
+
+```javascript
+function findMinimum(arr) {
+  arr.sort(function(a, b) {
+    return a - b;
+  });
+  //alert(arr[0]);
+  return arr[0];
+}
+findMinimum([9, 2, 3, 6, -1]);
+
+```
+
+```
+Time complexity is 
+O(nlogn)
+```
+</p>
+</details>
