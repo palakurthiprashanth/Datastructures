@@ -30,6 +30,16 @@ class LinkedList {
     tempCurrentNode.nextElement = node;
     return this;
   }
+  search(value) {
+    let currentNode = this.head;
+    while (currentNode !== null) {
+      if (currentNode.data === value) {
+        return true; // found
+      }
+      currentNode = currentNode.nextElement;
+    }
+    return false;
+  }
   printList() {
     console.log(this.head);
   }
@@ -37,6 +47,7 @@ class LinkedList {
 
 let list = new LinkedList();
 for (var i = 0; i < 5; i++) {
-  list.insertAtTail(i);
+  list.insertAtHead(i);
 }
 list.printList();
+list.search(4);

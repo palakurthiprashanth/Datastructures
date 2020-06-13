@@ -200,3 +200,32 @@ O(n)
 </p>
 
 </details>
+
+<details><summary>Search a value in lined list</summary>
+<p>
+
+```
+Only way is to loop like arrays
+```
+
+```javascript
+search(value) {
+    let currentNode = this.head;
+    while (currentNode !== null) {
+      if (currentNode.data === value) {
+        return true; // found
+      }
+      currentNode = currentNode.nextElement;
+    }
+    return false;
+  }
+```
+
+```
+Time complexity
+O(n)
+```
+
+</p>
+
+</details>
