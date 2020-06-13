@@ -267,4 +267,44 @@ O(1)
 
 </p>
 
+<details><summary>Deletion by value</summary>
+<p>
+
+```
+loop to list .
+while you are at current index , compare value with
+nextElement data , if same then link currentItem next
+element to currentNode.nextElement.nextElement.
+```
+
+```javascript
+deleteVal(value) {
+    if (this.isEmpty()) {
+      return;
+    }
+    let currentNode = this.head;
+    if (currentNode.data === value) {
+      this.head = currentNode.nextElement;
+      return true;
+    }
+    while (currentNode.nextElement !== null) {
+      if (currentNode.nextElement.data === value) {
+        currentNode.nextElement = currentNode.nextElement.nextElement;
+        return true;
+      }
+      currentNode = currentNode.nextElement;
+    }
+    return this;
+  }
+```
+
+```
+Time complexity
+O(1)
+```
+
+</p>
+
+</details>
+
 </details>
