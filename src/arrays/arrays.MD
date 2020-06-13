@@ -607,3 +607,39 @@ n+n = O(n);
 ```
 </p>
 </details>
+
+<details><summary>Challenge 7: single loop</summary>
+<p>
+
+```
+combining 2 loops to 1
+```
+
+
+```javascript
+
+function findSecondMaximum(arr) {
+  var max = Number.NEGATIVE_INFINITY;
+  var secondmax = Number.NEGATIVE_INFINITY;
+  for (var val of arr) {
+    debugger;
+    if (val > max) {
+      max = val;
+    }
+    if (val > secondmax && val !== max) secondmax = val;
+  }
+  alert(secondmax);
+  return secondmax;
+}
+findSecondMaximum([9, 2, 8, 3, 6]);
+
+
+
+```
+
+```
+Time complexity is 
+O(n);
+```
+</p>
+</details>
