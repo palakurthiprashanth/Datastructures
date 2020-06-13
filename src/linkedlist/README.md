@@ -345,18 +345,18 @@ O(n)
 
 </details>
 
-### Lined lists VS Arrays
+### Linked lists VS Arrays
 
 There are few differences between arrays and linked lists
 
 Time complexity for linked lists for insertion , deletion is
 O(1) for arrays it is O(n)
 
-| operation        | Linked list           | array         |
-| ---------------- | --------------------- | ------------- |
-| Access           | O(n) // coz raversing | O(1) - direct |
-| Insert (at head) | O(1) - direct         | O(n)          |
-| Delete(Head)     | O(1)                  | O(n)          |
-| Insert(tail)     | O(n)                  | O(1)          |
-| Delete (tail)    | O(n)                  | O(1)          |
-|                  |                       |               |
+| operation        | Linked list            | array         |
+| ---------------- | ---------------------- | ------------- |
+| Access           | O(n) // coz traversing | O(1) - direct |
+| Insert (at head) | O(1) - direct          | O(n)          |
+| Delete(Head)     | O(1)                   | O(n)          |
+| Insert(tail)     | O(n)                   | O(1)          |
+| Delete (tail)    | O(n)                   | O(1)          |
+|                  |                        |               |
