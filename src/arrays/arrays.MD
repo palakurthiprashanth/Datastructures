@@ -567,3 +567,43 @@ O(n power 2) as nested loop
 ```
 </p>
 </details>
+
+<details><summary>Challenge 7: Find Second Maximum Value in an Array</summary>
+<p>
+
+```
+This can be done by sorting
+then time complexity nlogn
+
+we can do by looping twice
+```
+
+
+```javascript
+
+function findSecondMaximum(arr) {
+  var firstMax = Number.NEGATIVE_INFINITY;
+  var secondMax = Number.NEGATIVE_INFINITY;
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i] > firstMax) {
+      firstMax = arr[i];
+    }
+  }
+  for (var j = 0; j < arr.length; j++) {
+    if (arr[j] < firstMax && arr[j] > secondMax) {
+      secondMax = arr[j];
+    }
+  }
+  //alert(secondMax);
+}
+findSecondMaximum([9, 2, 3, 6]);
+
+
+```
+
+```
+Time complexity is 
+n+n = O(n);
+```
+</p>
+</details>

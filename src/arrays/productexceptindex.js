@@ -1,17 +1,16 @@
-function findFirstUnique(arr) {
-  var index2 = 0;
+function findSecondMaximum(arr) {
+  var firstMax = Number.NEGATIVE_INFINITY;
+  var secondMax = Number.NEGATIVE_INFINITY;
   for (var i = 0; i < arr.length; i++) {
-    while (index2 < arr.length) {
-      if (i !== index2 && arr[i] === arr[index2]) {
-        break;
-      }
-      index2++;
+    if (arr[i] > firstMax) {
+      firstMax = arr[i];
     }
-    if (index2 === arr.length) {
-      return arr[i];
-    }
-    //alert(arr[i]);
   }
+  for (var j = 0; j < arr.length; j++) {
+    if (arr[j] < firstMax && arr[j] > secondMax) {
+      secondMax = arr[j];
+    }
+  }
+  //alert(secondMax);
 }
-
-findFirstUnique([9, 2, 3, 6, 2, 6, 9, 0, 3]);
+findSecondMaximum([9, 2, 3, 6]);
