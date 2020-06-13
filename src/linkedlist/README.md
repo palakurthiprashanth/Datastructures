@@ -266,6 +266,7 @@ O(1)
 ```
 
 </p>
+</details>
 
 <details><summary>Deletion by value</summary>
 <p>
@@ -304,7 +305,5 @@ O(1)
 ```
 
 </p>
-
-</details>
 
 </details>
