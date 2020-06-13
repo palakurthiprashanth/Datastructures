@@ -192,11 +192,11 @@ LinkedList.prototype.insertAtTail = function(newData) {
 };
 ```
 
-</p>
 ```
 Time complexity
-At every instance, we point the head Node to a new
-Node. Therefore, the time complexity for insertion at
-head is O(1).
+O(n)
 ```
+
+</p>
+
 </details>
