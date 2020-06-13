@@ -229,3 +229,42 @@ O(n)
 </p>
 
 </details>
+
+### Deleting in lined list
+
+It uses the search functionality , it searches in the
+linked list and just deletes it.
+
+3 ways we can delete in lined list.
+
+1. Deletion at head.
+2. Deletion at Tail.
+3. Deletion by value.
+
+<details><summary>Deletion at head</summary>
+<p>
+
+```
+It is just simple, link head to first element so zeroth
+element will be removed :)
+```
+
+```javascript
+deleteAtHead() {
+    if (this.isEmpty()) {
+      return this;
+    }
+    let currentNode = this.head;
+    this.head = currentNode.nextElement;
+    return this;
+  }
+```
+
+```
+Time complexity
+O(1)
+```
+
+</p>
+
+</details>

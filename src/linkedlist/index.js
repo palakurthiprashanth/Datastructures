@@ -40,6 +40,14 @@ class LinkedList {
     }
     return false;
   }
+  deleteAtHead() {
+    if (this.isEmpty()) {
+      return this;
+    }
+    let currentNode = this.head;
+    this.head = currentNode.nextElement;
+    return this;
+  }
   printList() {
     console.log(this.head);
   }
@@ -50,4 +58,6 @@ for (var i = 0; i < 5; i++) {
   list.insertAtHead(i);
 }
 list.printList();
-list.search(4);
+list.deleteAtHead();
+list.printList();
+//list.search(4);
