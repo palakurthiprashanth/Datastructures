@@ -1,11 +1,15 @@
-function rightRotate(arr, n) {
-  var rotatedArray = [];
-  for (var i = arr.length - n; i < arr.length; i++) {
-    rotatedArray.push(arr[i]);
+function reArrange(arr) {
+  var temp;
+  var leftPos = 0;
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i] < 0) {
+      temp = arr[i];
+      arr[i] = arr[leftPos];
+      arr[leftPos] = temp;
+      leftPos++;
+    }
   }
-  for (var i = 0; i < arr.length - n; i++) {
-    rotatedArray.push(arr[i]);
-  }
-  //alert(rotatedArray);
+  // alert(arr);
 }
-rightRotate([1, 2, 3, 4, 5], 3);
+
+reArrange([10, -1, 20, -4]);

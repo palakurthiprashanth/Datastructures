@@ -729,3 +729,41 @@ O(n);
 ```
 </p>
 </details>
+
+<details><summary>Challenge 9: without seperate arrays</summary>
+<p>
+
+```
+As there is no seperate arrays space consumed
+is less.
+here we swap all negitive elements
+with previous element.
+```
+
+```javascript
+
+function reArrange(arr) {
+  var temp;
+  var leftPos = 0;
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i] < 0) {
+      temp = arr[i];
+      arr[i] = arr[leftPos];
+      arr[leftPos] = temp;
+      leftPos++;
+    }
+  }
+  // alert(arr);
+}
+
+reArrange([10, -1, 20, -4]);
+
+```
+
+```
+The time complexity of this 
+algorithm is O(n), 
+with no extra space used
+```
+</p>
+</details>
