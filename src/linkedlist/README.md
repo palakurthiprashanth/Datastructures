@@ -46,3 +46,28 @@ deleteAtHead() - deletes the first element of the list
 search(data) - searches for an element in the linked list
 
 isEmpty() - returns true if the linked list is empty
+
+```
+### is Empty
+
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.nextElement = null;
+  }
+}
+
+class LinkedList {
+  constructor() {
+    this.head = null;
+  }
+}
+
+LinkedList.prototype.isEmpty = function() {
+  return this.head === null;
+};
+
+var list = new LinkedList();
+alert(list.isEmpty());
+
+```
