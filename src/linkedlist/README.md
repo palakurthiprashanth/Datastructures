@@ -307,3 +307,40 @@ O(1)
 </p>
 
 </details>
+
+<details><summary>Deletion Tail</summary>
+<p>
+
+```
+We just need to reach the second last node and update its
+nextElement.
+```
+
+```javascript
+deleteAtTail() {
+    if (this.isEmpty()) {
+      return this;
+    }
+    let firstNode = this.head;
+    if (firstNode.nextElement == null) {
+      this.deleteAtHead();
+      return this;
+    }
+    //otherwise traverse to reach second last node
+    while (firstNode.nextElement.nextElement != null) {
+      firstNode = firstNode.nextElement;
+    }
+    //since you have reached second last node, just update its nextElement pointer to point at null, skipping the last node
+    firstNode.nextElement = null;
+    return this;
+  }
+```
+
+```
+Time complexity
+O(n)
+```
+
+</p>
+
+</details>

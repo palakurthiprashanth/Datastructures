@@ -66,6 +66,23 @@ class LinkedList {
     }
     return this;
   }
+  deleteAtTail() {
+    if (this.isEmpty()) {
+      return this;
+    }
+    let firstNode = this.head;
+    if (firstNode.nextElement == null) {
+      this.deleteAtHead();
+      return this;
+    }
+    //otherwise traverse to reach second last node
+    while (firstNode.nextElement.nextElement != null) {
+      firstNode = firstNode.nextElement;
+    }
+    //since you have reached second last node, just update its nextElement pointer to point at null, skipping the last node
+    firstNode.nextElement = null;
+    return this;
+  }
   printList() {
     console.log(this.head);
   }
@@ -76,6 +93,7 @@ for (var i = 0; i < 5; i++) {
   list.insertAtHead(i);
 }
 list.printList();
-list.deleteVal(3);
+//list.deleteVal(3);
+list.deleteAtTail();
 list.printList();
 //list.search(4);
