@@ -812,3 +812,34 @@ algorithm is O(n)
 ```
 </p>
 </details>
+
+```
+Array questions
+```
+
+```
+function foo(value, arr) {
+    value = 1
+    arr[0] = 44
+}
+var v = 3
+var arr = [1, 2, 3]
+foo(v, arr)
+console.log(v, arr[0])
+
+// 3 44
+```
+```
+var values = [];
+ 
+function f(i, values) {
+    values.push(i)
+    console.log(values)
+    return values
+}
+f(1, values)
+f(2, values)
+f(3, values)
+
+// [1] [1, 2] [1, 2, 3]
+```
