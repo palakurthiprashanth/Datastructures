@@ -37,8 +37,12 @@ class LinkedList {
 Operations of Linked list
 
 insertAtTail(data) - inserts an element at the end of the linked list
+
 insertAtHead(data) - inserts an element at the start/head of the linked list
+
 delete(data) - deletes an element with your specified value from the linked list
+
 deleteAtHead() - deletes the first element of the list
 search(data) - searches for an element in the linked list
+
 isEmpty() - returns true if the linked list is empty
