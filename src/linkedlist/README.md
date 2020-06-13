@@ -360,3 +360,28 @@ O(1) for arrays it is O(n)
 | Insert(tail)     | O(n)                   | O(1)          |
 | Delete (tail)    | O(n)                   | O(1)          |
 |                  |                        |               |
+
+<details><summary>Length of linked list</summary>
+<p>
+
+```javascript
+length() {
+    let currentNode = this.head;
+    var size = 0;
+    while (currentNode !== null) {
+      size++;
+      currentNode = currentNode.nextElement;
+    }
+    //alert(size);
+    return size;
+  }
+```
+
+```
+Time complexity
+O(n)
+```
+
+</p>
+
+</details>

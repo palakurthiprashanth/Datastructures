@@ -83,6 +83,16 @@ class LinkedList {
     firstNode.nextElement = null;
     return this;
   }
+  length() {
+    let currentNode = this.head;
+    var size = 0;
+    while (currentNode !== null) {
+      size++;
+      currentNode = currentNode.nextElement;
+    }
+    //alert(size);
+    return size;
+  }
   printList() {
     console.log(this.head);
   }
@@ -94,6 +104,7 @@ for (var i = 0; i < 5; i++) {
 }
 list.printList();
 //list.deleteVal(3);
-list.deleteAtTail();
-list.printList();
+//list.deleteAtTail();
+//list.printList();
 //list.search(4);
+list.length();
