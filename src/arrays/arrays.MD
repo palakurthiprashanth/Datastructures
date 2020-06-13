@@ -643,3 +643,27 @@ O(n);
 ```
 </p>
 </details>
+
+<details><summary>Challenge 8: Right Rotate an Array by n</summary>
+<p>
+
+```
+Using splice and concat
+```
+
+```javascript
+
+function rightRotate(arr, n) {
+    return (arr.splice(arr.length - n)).concat(arr.splice(0, arr.length))
+}
+  console.log(rightRotate([1,2,3,4,5], 3))
+ o/p -> [ 3, 4, 5, 1, 2 ]
+
+```
+
+```
+Time complexity is 
+O(n);
+```
+</p>
+</details>
