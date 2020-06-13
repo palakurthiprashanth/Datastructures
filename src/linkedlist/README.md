@@ -71,3 +71,84 @@ var list = new LinkedList();
 alert(list.isEmpty());
 
 ```
+
+### Insertion
+
+1. Insertion at head
+2. insertion at tail
+3. insertion at nth index
+
+### Insertion at head
+
+New element will be inserted as first element.
+Head will point to newly added element and `nextElemet`
+will point to previous element which is pointed to
+Head or null
+
+### Insertion at tail
+
+New element will add to end.
+nextElement of newly added element is pointed to Null
+so it is tail node.
+
+### Insertion at nth node
+
+New node will be inserted at specified index.
+
+1.We traverse the linked list to look for the nth node.
+
+2. As soon as we find it, we assign the new node’s
+   nextElement to the nth node’s nextElement.
+
+3.Then we point nth node’s nextElement to the new node.
+
+<details><summary>Insert At Head</summary>
+<p>
+
+```javascript
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.nextElement = null;
+  }
+}
+class LinkedList {
+  constructor() {
+    this.head = null;
+  }
+  isEmpty() {
+    return this.head === null;
+  }
+  insertAtHead(newData) {
+    const tempNode = new Node(newData);
+    tempNode.nextElement = this.head;
+    this.head = tempNode;
+    return this;
+  }
+  printList() {
+    console.log(this.head);
+  }
+}
+
+const list = new LinkedList();
+for (var i = 0; i < 9; i++) {
+  list.insertAtHead(i);
+}
+list.printList();
+```
+
+```
+insertAtHead(newData) {
+  // create new node with new data
+    const tempNode = new Node(newData);
+ // attach nextelement property to current head
+    tempNode.nextElement = this.head;
+ // attach newly created head to temp node
+    this.head = tempNode;
+    return this;
+  }
+```
+
+</p>
+</details>
+```

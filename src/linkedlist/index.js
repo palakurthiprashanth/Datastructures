@@ -4,16 +4,26 @@ class Node {
     this.nextElement = null;
   }
 }
-
 class LinkedList {
   constructor() {
     this.head = null;
   }
+  isEmpty() {
+    return this.head === null;
+  }
+  insertAtHead(newData) {
+    const tempNode = new Node(newData);
+    tempNode.nextElement = this.head;
+    this.head = tempNode;
+    return this;
+  }
+  printList() {
+    console.log(this.head);
+  }
 }
 
-LinkedList.prototype.isEmpty = function() {
-  return this.head === null;
-};
-
-var list = new LinkedList();
-//alert(list.isEmpty());
+const list = new LinkedList();
+for (var i = 0; i < 9; i++) {
+  list.insertAtHead(i);
+}
+list.printList();
