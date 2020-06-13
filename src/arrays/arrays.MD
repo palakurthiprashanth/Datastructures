@@ -767,3 +767,44 @@ with no extra space used
 ```
 </p>
 </details>
+
+<details><summary>Challenge 10: Rearrange Sorted Array in Max/Min Form</summary>
+<p>
+
+```
+Arrange elements in such a way that the
+ maximum element appears at first,
+ then minimum at second, then second 
+ maximum at third position and 
+ second minimum at fourth, 
+and so on.
+
+Input 
+A sorted array
+```
+
+
+```javascript
+
+function maxMin(arr) {
+  var res = [];
+  for (var i = 0; i < Math.floor(arr.length / 2); i++) {
+    res.push(arr.length - i);
+    res.push(arr[i]);
+  }
+  if (arr.length % 2) {
+    res.push(Math.floor(arr.length / 2) + 1);
+  }
+  alert(res);
+}
+maxMin([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+
+
+```
+
+```
+The time complexity of this 
+algorithm is O(n)
+```
+</p>
+</details>
