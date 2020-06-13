@@ -1,14 +1,11 @@
-function findSecondMaximum(arr) {
-  var max = Number.NEGATIVE_INFINITY;
-  var secondmax = Number.NEGATIVE_INFINITY;
-  for (var val of arr) {
-    debugger;
-    if (val > max) {
-      max = val;
-    }
-    if (val > secondmax && val !== max) secondmax = val;
+function rightRotate(arr, n) {
+  var rotatedArray = [];
+  for (var i = arr.length - n; i < arr.length; i++) {
+    rotatedArray.push(arr[i]);
   }
-  //alert(secondmax);
-  return secondmax;
+  for (var i = 0; i < arr.length - n; i++) {
+    rotatedArray.push(arr[i]);
+  }
+  //alert(rotatedArray);
 }
-findSecondMaximum([9, 2, 8, 3, 6]);
+rightRotate([1, 2, 3, 4, 5], 3);

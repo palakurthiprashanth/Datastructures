@@ -648,7 +648,11 @@ O(n);
 <p>
 
 ```
+Given an array, can you rotate its elements
+ from right to left by one index? 
+ 
 Using splice and concat
+
 ```
 
 ```javascript
@@ -658,6 +662,64 @@ function rightRotate(arr, n) {
 }
   console.log(rightRotate([1,2,3,4,5], 3))
  o/p -> [ 3, 4, 5, 1, 2 ]
+
+```
+
+```
+Time complexity is 
+O(n);
+```
+</p>
+</details>
+
+<details><summary>Challenge 8: Mannual rotation</summary>
+<p>
+
+
+```javascript
+
+function rightRotate(arr, n) {
+  var rotatedArray = [];
+  for (var i = arr.length - n; i < arr.length; i++) {
+    rotatedArray.push(arr[i]);
+  }
+  for (var i = 0; i < arr.length - n; i++) {
+    rotatedArray.push(arr[i]);
+  }
+  //alert(rotatedArray);
+}
+rightRotate([1, 2, 3, 4, 5], 3);
+
+
+```
+
+```
+Time complexity is 
+O(n);
+```
+</p>
+</details>
+
+<details><summary>Challenge 9: Re-arrange positive and negitive numbers</summary>
+<p>
+
+
+```javascript
+
+function reArrange(arr){
+  var neg = []
+  var pos = []
+  for(let ele of arr){
+    if( ele < 0)
+      neg.push(ele)
+    else
+      pos.push(ele)
+  }
+  return neg.concat(pos)
+}
+
+console.log(reArrange([10,-1,20,4,5,-9,-6]))
+
 
 ```
 
