@@ -151,4 +151,9 @@ insertAtHead(newData) {
 
 </p>
 </details>
+
+```
+At every instance, we point the head Node to a new
+Node. Therefore, the time complexity for insertion at
+head is O(1).
 ```
