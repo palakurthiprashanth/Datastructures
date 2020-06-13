@@ -157,3 +157,46 @@ Node. Therefore, the time complexity for insertion at
 head is O(1).
 ```
 </details>
+
+<details><summary>Insert At Tail</summary>
+<p>
+
+```
+Reference :
+https://www.youtube.com/watch?v=IILYDOd_KGs
+```
+
+```javascript
+LinkedList.prototype.insertAtTail = function(newData) {
+  //Creating a new Node with data as newData
+  let node = new Node(newData);
+
+  //check for case when list is empty
+  if (this.isEmpty()) {
+    //Needs to Insert the new node at Head
+    this.head = node;
+    return this;
+  }
+
+  //Start from head
+  let currentNode = this.head;
+
+  //Iterate to the last element
+  while (currentNode.nextElement != null) {
+    currentNode = currentNode.nextElement;
+  }
+
+  //Make new node the nextElement of last node of list
+  currentNode.nextElement = node;
+  return this;
+};
+```
+
+</p>
+```
+Time complexity
+At every instance, we point the head Node to a new
+Node. Therefore, the time complexity for insertion at
+head is O(1).
+```
+</details>
