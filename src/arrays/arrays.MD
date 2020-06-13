@@ -328,16 +328,16 @@ function mergeArrays(arr1, arr2) {
 
 console.log(mergeArrays([4,5,6],[-2,-1,0,7]))
 ```
-</p>
-</details>
 
 ```
 The sort() function in javascript compares the values as strings in lexicographical order. Due to this reason, 50 will be considered greater than the 300 since 5 is greater than 3. Thus, sort() function will produce unexpected output. We can resolve this issue by using a function to compare two values in the argument of the sort() function. In this way, arrays values will be sorted according to the value returned from the compare function.
 ```
 ```
 Time complexity
-The time complexity for this solution will be O(n log n )O(nlogn) since we are using the sort() function.
+The time complexity for this solution will be O(n log n ) since we are using the sort() function.
 ```
+</p>
+</details>
 
 <details><summary>Challenge 3: Find Two Numbers that Add up to "value"</summary>
 <p>
