@@ -32,3 +32,18 @@ var myStack = new stack();
 console.log("You have successfully created a Stack.");
 
 ```
+
+## Implementing isEmpty() , getTop(), size
+
+```
+getTop() {
+    if (this.items.length === 0) return null;
+    return this.top;
+  }
+  isEmpty() {
+    return this.items.length === 0;
+  }
+  size() {
+    return this.items.length;
+  }
+```
