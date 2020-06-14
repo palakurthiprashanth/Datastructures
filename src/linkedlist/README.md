@@ -476,6 +476,14 @@ for (var i = 0; i < 4; i++) {
 ```
 
 ```
+Explanation
+Take 2 pointers
+while loop -> if any one is null hen there is no loop
+incerement one pointer by one step and other by 2 steps.
+if both meet then there is loop
+```
+
+```
 Time complexity
 O(n)
 ```
@@ -483,3 +491,16 @@ O(n)
 </p>
 
 </details>
+
+<details><summary>Detect start of loop in linked list</summary>
+<p>
+
+```javascript
+```
+
+```
+
+</p>
+
+</details>
+```
