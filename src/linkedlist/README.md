@@ -206,6 +206,8 @@ O(n)
 <p>
 
 ```
+I/p - A linked list and an integer to be searched.
+O/p - true if the integer is found. false otherwise.
 Only way is to loop like arrays
 ```
 
