@@ -427,6 +427,10 @@ O(n)
 <p>
 
 ```
+Reference : https://www.youtube.com/watch?v=zbozWoMgKW0
+```
+
+```
 Floyd’s Cycle-Finding Algorithm
 
 head->1->5->7->3 // doent contain a loop
