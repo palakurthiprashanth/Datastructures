@@ -103,10 +103,15 @@ for (var i = 0; i < 5; i++) {
 
 ```
 
-```
-
-```
 
 </p>
 
 </details>
+|  operation |  Tkkkime complexity |
+|---|---|
+|  isEmpty |  O(1) |
+|   |   |
+|   |   |
+|   |   |
+|   |   |
+|   |   |
