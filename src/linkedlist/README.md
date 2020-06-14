@@ -385,3 +385,40 @@ O(n)
 </p>
 
 </details>
+
+<details><summary>reverse linked list</summary>
+<p>
+
+```
+It is simple , we just store ref to previous node and next.
+in linked list next element points to next element so here
+we will make next element point to previous element so it will be
+reversed for first element previous node will be null.
+and in last change head to first element.
+```
+
+```javascript
+reverse() {
+    let prevNode = null;
+    let currentNode = this.head;
+    let nextNode = null;
+
+    while (currentNode != null) {
+      nextNode = currentNode.nextElement;
+      currentNode.nextElement = prevNode;
+      prevNode = currentNode;
+      currentNode = nextNode;
+    }
+    this.head = prevNode;
+    console.log(this.head);
+  }
+```
+
+```
+Time complexity
+O(n)
+```
+
+</p>
+
+</details>

@@ -93,6 +93,20 @@ class LinkedList {
     //alert(size);
     return size;
   }
+  reverse() {
+    let prevNode = null;
+    let currentNode = this.head;
+    let nextNode = null;
+
+    while (currentNode != null) {
+      nextNode = currentNode.nextElement;
+      currentNode.nextElement = prevNode;
+      prevNode = currentNode;
+      currentNode = nextNode;
+    }
+    this.head = prevNode;
+    console.log(this.head);
+  }
   printList() {
     console.log(this.head);
   }
@@ -107,4 +121,5 @@ list.printList();
 //list.deleteAtTail();
 //list.printList();
 //list.search(4);
-list.length();
+//list.length();
+list.reverse();
