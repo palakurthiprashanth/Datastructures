@@ -11,6 +11,9 @@ class LinkedList {
   isEmpty() {
     return this.head === null;
   }
+  getHead() {
+    return this.head;
+  }
   insertAtHead(newData) {
     const tempNode = new Node(newData);
     tempNode.nextElement = this.head;
@@ -107,14 +110,49 @@ class LinkedList {
     this.head = prevNode;
     console.log(this.head);
   }
+  detectLoop() {
+    let onestep = this.head;
+    let twostep = this.head;
+    while (
+      onestep !== null &&
+      twostep !== null &&
+      twostep.nextElement !== null
+    ) {
+      onestep = onestep.nextElement;
+      twostep = twostep.nextElement.nextElement;
+      if (onestep === twostep) {
+        console.log("loop");
+        return true;
+      }
+    }
+    return false;
+  }
   printList() {
     console.log(this.head);
   }
 }
 
-let list = new LinkedList();
-for (var i = 0; i < 5; i++) {
+//let list = new LinkedList();
+/** for (var i = 0; i < 5; i++) {
   list.insertAtHead(i);
+}
+*/
+let list = new LinkedList();
+
+list.insertAtHead(21);
+list.insertAtHead(14);
+list.insertAtHead(7);
+
+let head = list.getHead();
+let node = list.getHead();
+
+// Adding a loop
+for (var i = 0; i < 4; i++) {
+  if (node.nextElement == null) {
+    node.nextElement = head.nextElement;
+    break;
+  }
+  node = node.nextElement;
 }
 list.printList();
 //list.deleteVal(3);
@@ -122,4 +160,5 @@ list.printList();
 //list.printList();
 //list.search(4);
 //list.length();
-list.reverse();
+//list.reverse();
+list.detectLoop();

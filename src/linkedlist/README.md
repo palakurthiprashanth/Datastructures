@@ -422,3 +422,64 @@ O(n)
 </p>
 
 </details>
+
+<details><summary>Detect loop in linked list</summary>
+<p>
+
+```
+Floyd’s Cycle-Finding Algorithm
+
+head->1->5->7->3 // doent contain a loop
+head->1->5->7>-3->5 // its a loop as 1 is point to 5 and 3 pointing to 5;
+basically doesnot end with null
+```
+
+```javascript
+detectLoop() {
+    let onestep = this.head;
+    let twostep = this.head;
+    while (
+      onestep !== null &&
+      twostep !== null &&
+      twostep.nextElement !== null
+    ) {
+      onestep = onestep.nextElement;
+      twostep = twostep.nextElement.nextElement;
+      if (onestep === twostep) {
+        console.log("loop");
+        return true;
+      }
+    }
+    return false;
+  }
+```
+
+```javascript
+// Adding loop
+let list = new LinkedList();
+
+list.insertAtHead(21);
+list.insertAtHead(14);
+list.insertAtHead(7);
+
+let head = list.getHead();
+let node = list.getHead();
+
+// Adding a loop
+for (var i = 0; i < 4; i++) {
+  if (node.nextElement == null) {
+    node.nextElement = head.nextElement;
+    break;
+  }
+  node = node.nextElement;
+}
+```
+
+```
+Time complexity
+O(n)
+```
+
+</p>
+
+</details>
