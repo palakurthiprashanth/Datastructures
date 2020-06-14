@@ -147,9 +147,10 @@ insertAtHead(newData) {
     this.head = tempNode;
     return this;
   }
+  </p>
 ```
 
-</p>
+
 ```
 Time complexity
 At every instance, we point the head Node to a new
@@ -182,7 +183,7 @@ LinkedList.prototype.insertAtTail = function(newData) {
   let currentNode = this.head;
 
   //Iterate to the last element
-  while (currentNode.nextElement != null) {
+  while (currentNode.nextElement != null) { // chec if last element has next element
     currentNode = currentNode.nextElement;
   }
 
