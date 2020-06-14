@@ -496,20 +496,21 @@ O(n)
 
 </details>
 
-<details><summary>Detect start of loop in linked list</summary>
+<details><summary>Detect start</summary>
 <p>
 
 ```javascript
 ```
 
-````
+```
+
+```
 
 </p>
 
 </details>
 
-
-<details><summary>Find middle of linked list</summary>
+<details><summary>Find Middle Value of a Linked List</summary>
 <p>
 
 ```javascript
@@ -530,13 +531,13 @@ findMid() {
     console.log(midNode);
     return midNode;
   }
-````
+```
 
-Time complexity is O(n)
-
+```
+Time complexity
+O(n)
 ```
 
 </p>
 
 </details>
-```
