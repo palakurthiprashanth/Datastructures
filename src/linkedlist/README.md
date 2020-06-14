@@ -586,3 +586,47 @@ O(n)
 </p>
 
 </details>
+
+<details><summary>Remove duplicates in linked list
+</summary>
+<p>
+
+```javascript
+removeDuplicates() {
+    if (this.isEmpty()) {
+      return null;
+    }
+    // if list has only 1 item
+    if (this.head.nextElement === null) {
+      return this.head;
+    }
+    let outernode = this.head;
+    let innernode = this.head;
+    while (outernode !== null) {
+      while (innernode !== null) {
+        // check for duplicate and if found
+        if (
+          innernode.nextElement !== null &&
+          outernode.data === innernode.nextElement.data
+        ) {
+          // remove duplicate
+          innernode.nextElement = innernode.nextElement.nextElement;
+        } else {
+          innernode = innernode.nextElement;
+        }
+      }
+      outernode = outernode.nextElement;
+    }
+    console.log("duplicates");
+    return this;
+  }
+```
+
+```
+Time complexity
+O(n power 2)
+```
+
+</p>
+
+</details>
