@@ -127,17 +127,52 @@ class LinkedList {
     }
     return false;
   }
+  findMid() {
+    let midNode = null;
+    let length = 0;
+    let tempNode = list.getHead();
+    while (tempNode != null) {
+      tempNode = tempNode.nextElement;
+      length++;
+    }
+    let middle = Math.ceil(length / 2);
+    midNode = list.getHead();
+    for (var i = 1; i < middle; i++) {
+      midNode = midNode.nextElement;
+    }
+    console.log("middle");
+    console.log(midNode);
+    return midNode;
+  }
+  findMidFast() {
+    let midNode = null;
+    //Write your code here
+    if (list.isEmpty()) {
+      return null;
+    }
+    let slowerNode = list.getHead();
+    let fasterNode = list.getHead();
+    if (slowerNode.nextElement == null) {
+      return slowerNode;
+    }
+    while (slowerNode.nextElement != null && fasterNode.nextElement != null) {
+      slowerNode = slowerNode.nextElement;
+      fasterNode = fasterNode.nextElement.nextElement;
+    }
+    console.log(slowerNode);
+    return slowerNode;
+  }
   printList() {
     console.log(this.head);
   }
 }
 
-//let list = new LinkedList();
-/** for (var i = 0; i < 5; i++) {
+let list = new LinkedList();
+for (var i = 0; i < 5; i++) {
   list.insertAtHead(i);
 }
-*/
-let list = new LinkedList();
+
+/** let list = new LinkedList();
 
 list.insertAtHead(21);
 list.insertAtHead(14);
@@ -154,6 +189,7 @@ for (var i = 0; i < 4; i++) {
   }
   node = node.nextElement;
 }
+*/
 list.printList();
 //list.deleteVal(3);
 //list.deleteAtTail();
@@ -161,4 +197,6 @@ list.printList();
 //list.search(4);
 //list.length();
 //list.reverse();
-list.detectLoop();
+//list.detectLoop();
+list.findMid();
+list.findMidFast();

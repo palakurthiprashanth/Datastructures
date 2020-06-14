@@ -502,6 +502,38 @@ O(n)
 ```javascript
 ```
 
+````
+
+</p>
+
+</details>
+
+
+<details><summary>Find middle of linked list</summary>
+<p>
+
+```javascript
+findMid() {
+    let midNode = null;
+    let length = 0;
+    let tempNode = list.getHead();
+    while (tempNode != null) {
+      tempNode = tempNode.nextElement;
+      length++;
+    }
+    let middle = Math.ceil(length / 2);
+    midNode = list.getHead();
+    for (var i = 1; i < middle; i++) {
+      midNode = midNode.nextElement;
+    }
+    console.log("middle");
+    console.log(midNode);
+    return midNode;
+  }
+````
+
+Time complexity is O(n)
+
 ```
 
 </p>
