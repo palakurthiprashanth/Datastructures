@@ -722,3 +722,34 @@ It performs two iterations, so the complexity is O(n).
 </p>
 
 </details>
+
+### Double lined list
+
+```
+ since a linked list can only be traversed in one direction, this
+ limits us to a great extent. Thus we needlessly have to keep track
+ of previous elements.
+
+ The only difference between doubly and singly-linked lists is that
+ in DLLs, each node contains pointers for both the previous and the
+ next node. This makes the DLLs bi-directional.
+```
+
+```javascript
+class Node {
+  constructor(value) {
+    this.data = value; //Stores data
+    this.previousElement = null; //Stores pointer to previous element
+    this.nextElement = null; //Stores pointer to next element
+  }
+}
+```
+
+```javascript
+class LinkedList {
+  constructor() {
+    this.head = null;
+    this.tail = null;
+  }
+}
+```
