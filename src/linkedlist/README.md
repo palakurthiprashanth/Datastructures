@@ -723,7 +723,7 @@ It performs two iterations, so the complexity is O(n).
 
 </details>
 
-### Double lined list
+### Double linked list
 
 ```
  since a linked list can only be traversed in one direction, this
