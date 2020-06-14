@@ -541,3 +541,42 @@ O(n)
 </p>
 
 </details>
+
+<details><summary>Find Middle Value of a Linked List 
+in faster way
+</summary>
+<p>
+```
+In the same iteration we will maintain 2 pointers , 1st pointer will
+increment by 1 and 2nd pointer will increment by 2 steps if at any
+point if anyone is null then 1st pointer is midddle value.
+```
+```javascript
+findMidFast() {
+    let midNode = null;
+    //Write your code here
+    if (list.isEmpty()) {
+      return null;
+    }
+    let slowerNode = list.getHead();
+    let fasterNode = list.getHead();
+    if (slowerNode.nextElement == null) {
+      return slowerNode;
+    }
+    while (slowerNode.nextElement != null && fasterNode.nextElement != null) {
+      slowerNode = slowerNode.nextElement;
+      fasterNode = fasterNode.nextElement.nextElement;
+    }
+    console.log(slowerNode);
+    return slowerNode;
+  }
+```
+
+```
+Time complexity
+O(n)
+```
+
+</p>
+
+</details>
