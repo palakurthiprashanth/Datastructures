@@ -547,6 +547,9 @@ in faster way
 </summary>
 <p>
 ```
+Reference : https://www.youtube.com/watch?v=Uk-PkL5WMMY
+```
+```
 In the same iteration we will maintain 2 pointers , 1st pointer will
 increment by 1 and 2nd pointer will increment by 2 steps if at any
 point if anyone is null then 1st pointer is midddle value.
