@@ -202,7 +202,7 @@ O(n)
 
 </details>
 
-<details><summary>Search a value in lined list</summary>
+<details><summary>Search a value in linked list</summary>
 <p>
 
 ```
