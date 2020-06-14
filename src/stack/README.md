@@ -105,7 +105,6 @@ for (var i = 0; i < 5; i++) {
 }
 ```
 
-```
 | Operation | Time Complexity |
 | --------- | --------------- |
 | isEmpty   | O(1)            |
@@ -114,7 +113,6 @@ for (var i = 0; i < 5; i++) {
 | push      | O(1)            |
 | pop       | O(1)            |
 |           |                 |
-```
 
 </p>
 
