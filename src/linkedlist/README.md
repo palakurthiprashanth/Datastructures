@@ -671,3 +671,14 @@ this algorithm would be O(m) where m is the size of the first list.
 </p>
 
 </details>
+
+<details><summary>Intersection of linked list
+</summary>
+<p>
+
+```javascript
+```
+
+</p>
+
+</details>
