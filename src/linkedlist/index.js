@@ -250,6 +250,36 @@ function union(list1, list2) {
   console.log(list1);
   return list1;
 }
+function findNth(list, n) {
+  let nthNode = null;
+  let length = 0;
+  let tempNode = list.getHead();
+  while (tempNode != null) {
+    tempNode = tempNode.nextElement;
+    length++;
+  }
+  let nthPos = length - n;
+  if (nthPos < 0 || nthPos > length) {
+    return null;
+  }
+  nthNode = list.getHead();
+  for (var i = 0; i < nthPos; i++) {
+    nthNode = nthNode.nextElement;
+  }
+  return nthNode;
+}
+let l1 = new LinkedList();
+l1.insertAtHead(54);
+l1.insertAtHead(89);
+l1.insertAtHead(11);
+l1.insertAtHead(40);
+l1.insertAtHead(23);
+
+for (var i = 1; i < 5; i++) {
+  console.log(findNth(l1, i).data);
+}
+console.log(findNth(l1, 100));
+
 let ulist1 = new LinkedList();
 let ulist2 = new LinkedList();
 ulist1.insertAtHead(8);

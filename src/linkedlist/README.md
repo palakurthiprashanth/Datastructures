@@ -682,3 +682,42 @@ this algorithm would be O(m) where m is the size of the first list.
 </p>
 
 </details>
+
+<details><summary>find nth node from last in linked list
+</summary>
+<p>
+```
+1. Calculate the length of the linked list
+2. Find the position of the node using length - n + 1 (We start from the last node since we can’t start from null)
+3. Check if n is within the length
+4. Iterate over to the node and return it
+```
+
+```javascript
+function findNth(list, n) {
+  let nthNode = null;
+  let length = 0;
+  let tempNode = list.getHead();
+  while (tempNode != null) {
+    tempNode = tempNode.nextElement;
+    length++;
+  }
+  let nthPos = length - n;
+  if (nthPos < 0 || nthPos > length) {
+    return null;
+  }
+  nthNode = list.getHead();
+  for (var i = 0; i < nthPos; i++) {
+    nthNode = nthNode.nextElement;
+  }
+  return nthNode;
+}
+```
+
+```
+It performs two iterations, so the complexity is O(n).
+```
+
+</p>
+
+</details>
