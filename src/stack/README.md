@@ -1,22 +1,26 @@
 ### stacks
+
 Stacks follow Last-in-first-out
 UNDO operation is classic example for it.
 
 ## functionalities of stack
+
 push(element) - Pushes element to top of stack.
 
-pop()  - removes element form top of stack.
+pop() - removes element form top of stack.
 
 isEmpty() - returns Boolean 1 if it is empty.
 
 getTop() - returns element added recently.
 
 ## Implementation
+
 Stacks can be implemented with arrays or Linked lists
 both have their own advanages and dis-advantages.
 Here we will see with arrays.
 
 ## creating stack
+
 stack has all the methods like above and stack class has
 all items , and top element
 
@@ -49,7 +53,6 @@ getTop() {
 ```
 
 ## Full stack implementation using JS array
-
 
 <details><summary>Stack</summary>
 <p>
@@ -100,18 +103,19 @@ for (var i = 0; i < 5; i++) {
   console.log("Element poped" + myStack.pop());
   console.log("top :" + myStack.getTop());
 }
-
 ```
 
+```
+| Operation | Time Complexity |
+| --------- | --------------- |
+| isEmpty   | O(1)            |
+| top       | O(1)            |
+| size      | O(1)            |
+| push      | O(1)            |
+| pop       | O(1)            |
+|           |                 |
+```
 
 </p>
 
 </details>
-|  operation |  Tkkkime complexity |
-|---|---|
-|  isEmpty |  O(1) |
-|   |   |
-|   |   |
-|   |   |
-|   |   |
-|   |   |
