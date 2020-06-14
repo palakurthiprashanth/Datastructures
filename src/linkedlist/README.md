@@ -233,7 +233,7 @@ O(n)
 
 </details>
 
-### Deleting in lined list
+### Deleting in linked list
 
 It uses the search functionality , it searches in the
 linked list and just deletes it.
