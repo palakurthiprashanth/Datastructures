@@ -630,3 +630,44 @@ O(n power 2)
 </p>
 
 </details>
+
+<details><summary>Union of linked list
+</summary>
+<p>
+
+```javascript
+function union(list1, list2) {
+  if (list1.isEmpty()) {
+    return list2;
+  } else if (list2.isEmpty()) {
+    return list1;
+  }
+
+  let start = list1.getHead();
+
+  //Traverse the first list till the tail
+  while (start.nextElement != null) {
+    start = start.nextElement;
+  }
+
+  //Link last element of first list to the first element of second list
+  start.nextElement = list2.getHead();
+  list1.removeDuplicates();
+  console.log("union");
+  console.log(list1);
+  return list1;
+}
+```
+
+```
+If we did not have the care of duplicates, the runtime complexity of
+this algorithm would be O(m) where m is the size of the first list.
+ However, because of duplicates, we need to traverse the whole union
+  list. This increases the time complexity to O(m+n)power 2
+​
+​​  where m is the size of the first list and n is the size of the second list.
+```
+
+</p>
+
+</details>

@@ -229,3 +229,40 @@ list.printList();
 //list.findMid();
 //list.findMidFast();
 list.removeDuplicates();
+function union(list1, list2) {
+  if (list1.isEmpty()) {
+    return list2;
+  } else if (list2.isEmpty()) {
+    return list1;
+  }
+
+  let start = list1.getHead();
+
+  //Traverse the first list till the tail
+  while (start.nextElement != null) {
+    start = start.nextElement;
+  }
+
+  //Link last element of first list to the first element of second list
+  start.nextElement = list2.getHead();
+  list1.removeDuplicates();
+  console.log("union");
+  console.log(list1);
+  return list1;
+}
+let ulist1 = new LinkedList();
+let ulist2 = new LinkedList();
+ulist1.insertAtHead(8);
+ulist1.insertAtHead(22);
+ulist1.insertAtHead(15);
+ulist1.insertAtHead(22);
+ulist1.printList();
+
+ulist2.insertAtHead(21);
+ulist2.insertAtHead(14);
+ulist2.insertAtHead(21);
+ulist2.insertAtHead(8);
+ulist2.insertAtHead(7);
+ulist2.printList();
+
+union(ulist1, ulist2);
