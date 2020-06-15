@@ -14,10 +14,25 @@ class Queue {
     }
     return this.items[0];
   }
+  enqueue(element) {
+    this.items.push(element);
+  }
+  dequeue() {
+    if (this.items.length === 0) {
+      return null;
+    }
+    this.items.shift();
+  }
 }
 
 var myQueue = new Queue();
 //alert("created");
-console.log("You have successfully created a Queue of size: " + myQueue.size());
-console.log("Is queue empty()?: " + myQueue.isEmpty());
-console.log("getFront(): " + myQueue.getFront());
+
+myQueue.enqueue(1);
+myQueue.enqueue(2);
+myQueue.enqueue(3);
+myQueue.enqueue(4);
+
+console.log(myQueue.getFront()); //1
+console.log(myQueue.dequeue());
+console.log(myQueue.getFront()); //2
