@@ -267,3 +267,44 @@ console.log(myQueue.getFront()); //2
 ```
 
 Time complexity of `isEmpty`,`front`,`back`,`size`,`enqueue`,`dequeue` is O(1)
+
+## challenges
+
+<details><summary>Generate Binary Numbers From 1 to n Using Queue
+</summary>
+<p>
+
+```
+pattern is from current number two numbers are creted by appending 0 and 1
+1 ,10,11
+10,100,101
+11,110,111 so on...
+```
+
+```
+https://www.youtube.com/watch?v=kL9KgvZs4e0
+```
+
+```javascript
+function findBin(n) {
+  let result = [];
+  let myQueue = new Queue();
+  myQueue.enqueue(1);
+  for (var i = 0; i < n; i++) {
+    result.push(myQueue.dequeue());
+    var s1 = result[i] + "0";
+    var s2 = result[i] + "1";
+    myQueue.enqueue(s1);
+    myQueue.enqueue(s2);
+  }
+  return result;
+}
+```
+
+```
+The time complexity of this solution is in O(n)O(n)
+```
+
+</p>
+
+</details>

@@ -1,38 +1,49 @@
 class Queue {
   constructor() {
     this.items = [];
+    this.front = null;
+    this.back = null;
   }
+
   isEmpty() {
     return this.items.length === 0;
   }
+
+  getFront() {
+    if (this.items.length !== 0) {
+      return this.items[0];
+    } else return null;
+  }
+
   size() {
     return this.items.length;
   }
-  getFront() {
-    if (this.items.length === 0) {
-      return null;
-    }
-    return this.items[0];
-  }
+
   enqueue(element) {
     this.items.push(element);
   }
+
   dequeue() {
     if (this.items.length === 0) {
       return null;
+    } else {
+      return this.items.shift();
     }
-    this.items.shift();
   }
 }
 
-var myQueue = new Queue();
-//alert("created");
+function findBin(n) {
+  let result = [];
+  let myQueue = new Queue();
+  myQueue.enqueue(1);
+  for (var i = 0; i < n; i++) {
+    result.push(myQueue.dequeue());
+    var s1 = result[i] + "0";
+    var s2 = result[i] + "1";
+    myQueue.enqueue(s1);
+    myQueue.enqueue(s2);
+  }
+  return result;
+}
 
-myQueue.enqueue(1);
-myQueue.enqueue(2);
-myQueue.enqueue(3);
-myQueue.enqueue(4);
-
-console.log(myQueue.getFront()); //1
-console.log(myQueue.dequeue());
-console.log(myQueue.getFront()); //2
+console.log(findBin(3));
