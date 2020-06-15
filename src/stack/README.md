@@ -168,3 +168,22 @@ In this all elements will have priorities associated with it.
 Least prioritized element will be at end of list.
 It is mostly used in Operating systems for which
 process to execute.
+
+## Implementation of Queue
+
+Queue can be implemened by arrays, linkedlists, stacks ,but most common is arrays as it is simple. It has above methods
+
+## Queue class
+
+It has items which is elements in queus and relevent methods.
+
+```
+class Queue {
+  constructor() {
+    this.items = [];
+  }
+}
+
+var myQueue = new Queue();
+//alert("created");
+```
