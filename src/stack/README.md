@@ -117,3 +117,54 @@ for (var i = 0; i < 5; i++) {
 </p>
 
 </details>
+
+## Queue
+
+Similar to stack Queue stores elements in sequential manner.
+Stack uses LIFO but
+Queue uses FIFO principle
+
+think as pipe with both ends open
+one enters first from `back`
+leaves first from `front`
+
+## when do we generally use queue ?
+
+1. when we need to prioritize any task
+2. A resource is shared between multiple devices
+
+## How do Queue works ?
+
+It has following functionalities
+
+| Function         | What does it do?                 |
+| ---------------- | -------------------------------- |
+| enqueue(element) | inserts at end of queue          |
+| dequeue()        | removes form start of queue      |
+| getFront()       | returns first element from queue |
+| isEmpty()        | checks if the queue is empty     |
+| size()           | returns the size of the queue    |
+|                  |                                  |
+
+## Types of queue
+
+1. Linear queue
+2. Circular queue
+3. PRIORITY Queue
+
+Linear queue - till now we have seen linear queue
+
+## circular queue
+
+circular in nature which means both are connected to form circle.
+circular queues are used in
+
+1. simulation of objects.
+2. Event handling (do something when a particular event occurs).
+
+## priority queue
+
+In this all elements will have priorities associated with it.
+Least prioritized element will be at end of list.
+It is mostly used in Operating systems for which
+process to execute.
