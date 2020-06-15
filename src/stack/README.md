@@ -265,3 +265,5 @@ console.log(myQueue.getFront()); //1
 console.log(myQueue.dequeue());
 console.log(myQueue.getFront()); //2
 ```
+
+Time complexity of `isEmpty`,`front`,`back`,`size`,`enqueue`,`dequeue` is O(1)
