@@ -205,3 +205,8 @@ isEmpty() {
     return this.items[0];
   }
 ```
+
+`enqueue` - is like inserting to last means push in Arrays
+
+`dequeue` - is like removing from first means shift in
+Arrays.
