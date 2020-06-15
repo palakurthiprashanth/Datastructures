@@ -187,3 +187,21 @@ class Queue {
 var myQueue = new Queue();
 //alert("created");
 ```
+
+Below is code with helper functions which is straighrforword
+`isEmpty` , `size`, `getFront`
+
+```
+isEmpty() {
+    return this.items.length === 0;
+  }
+  size() {
+    return this.items.length;
+  }
+  getFront() {
+    if (this.items.length === 0) {
+      return null;
+    }
+    return this.items[0];
+  }
+```
