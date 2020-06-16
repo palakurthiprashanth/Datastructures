@@ -569,3 +569,57 @@ Time complexity of the dequeue operation becomes O(n)O(n), while the time comple
 </p>
 
 </details>
+
+<details><summary>Sort Values in Stack
+</summary>
+<p>
+
+```
+https://www.youtube.com/watch?v=b7pEt2vMfnQ&t=654s
+
+This way we are creating temp stack
+there is also a way without temp stack
+
+```
+
+```
+
+```
+
+```javascript
+function sortStack(stack) {
+  //1. Use a second tempStack.
+  var tempStack = new Stack();
+  var value;
+  while (stack.isEmpty() == false) {
+    //2. Pop value from mainStack.
+    value = stack.pop();
+    //3. If the value is greater than or equal to the top of tempStack, then push the value in tempStack
+    if (value >= tempStack.getTop()) {
+      tempStack.push(value);
+    } else {
+      // else pop all values from tempStack and push them in mainStack
+      while (tempStack.isEmpty() == false) {
+        stack.push(tempStack.pop());
+      }
+      // and in the end push value in tempStack
+      tempStack.push(value);
+    }
+    //4.repeat from step 2 till mainStack is not empty.
+  }
+  //5. When mainStack will be empty, tempStack will have sorted values in descending order.
+  //6. Now transfer values from tempStack to mainStack to make values sorted in ascending order.
+  while (tempStack.isEmpty() == false) {
+    stack.push(tempStack.pop());
+  }
+  return stack;
+}
+```
+
+```
+The outer and inner loops both traverse all the n elements of the stack. Hence, the time complexity is O(n2).
+```
+
+</p>
+
+</details>

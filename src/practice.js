@@ -1,58 +1,65 @@
-class stack {
+class Stack {
   constructor() {
     this.items = [];
     this.top = null;
   }
-  isEmpty() {
-    return this.items.length === 0;
-  }
+
   getTop() {
+    if (this.items.length == 0) return null;
     return this.top;
   }
-  push(value) {
-    this.items.push(value);
-    this.top = value;
+
+  isEmpty() {
+    return this.items.length == 0;
   }
+
+  size() {
+    return this.items.length;
+  }
+
+  push(element) {
+    this.items.push(element);
+    this.top = element;
+  }
+
   pop() {
-    if (this.items.length === 0) {
-      return null;
-    }
-    if (this.items.length === 1) {
-      this.top = null;
-      return this.items.pop();
-    }
-    this.top = this.items[this.items.length - 2];
-    return this.items.pop();
-  }
-}
-
-class queue {
-  constructor(size) {
-    this.tempStack = new stack();
-    this.mainStack = new stack();
-  }
-  enquee(value) {
-    this.mainStack.push(value);
-  }
-  dequeue() {
-    if (this.tempStack.isEmpty() && this.mainStack.isEmpty()) {
-      return null;
-    }
-    debugger;
-    if (this.tempStack.isEmpty()) {
-      while (this.mainStack.isEmpty() === false) {
-        this.tempStack.push(this.mainStack.pop());
+    if (this.items.length != 0) {
+      if (this.items.length == 1) {
+        this.top = null;
+        return this.items.pop();
+      } else {
+        this.top = this.items[this.items.length - 2];
+        return this.items.pop();
       }
-      return this.tempStack.pop();
-    }
-    return this.tempStack.pop();
+    } else return null;
   }
 }
+function sortStack(stack) {
+  let tempStack = new Stack();
+  let value;
+  while (stack.isEmpty() === false) {
+    //tempStack.push(stack.pop());
+    value = stack.pop();
+    if (value >= tempStack.getTop()) {
+      tempStack.push(value);
+    } else {
+      while (tempStack.isEmpty() === false) {
+        stack.push(tempStack.pop());
+      }
+      tempStack.push(value);
+    }
+  }
+  while (tempStack.isEmpty() === false) {
+    stack.push(tempStack.pop());
+  }
+  console.log(stack);
+  return stack;
+}
 
-var q1 = new queue();
-q1.enquee(1);
-q1.enquee(2);
-q1.enquee(3);
-console.log(q1.dequeue());
-console.log(q1.dequeue());
-console.log(q1.dequeue());
+var mystack = new Stack();
+mystack.push(1);
+mystack.push(10);
+mystack.push(5);
+mystack.push(7);
+mystack.push(2);
+sortStack(mystack);
