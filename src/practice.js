@@ -34,32 +34,26 @@ class Stack {
     } else return null;
   }
 }
-function sortStack(stack) {
-  let tempStack = new Stack();
-  let value;
-  while (stack.isEmpty() === false) {
-    //tempStack.push(stack.pop());
-    value = stack.pop();
-    if (value >= tempStack.getTop()) {
-      tempStack.push(value);
+function evaluatePostfix(exp) {
+  let myStack = new Stack();
+  let op1, op2;
+  for (var i = 0; i < exp.length; i++) {
+    if (!isNaN(parseInt(exp[i], 10))) {
+      myStack.push(parseInt(exp[i], 10));
     } else {
-      while (tempStack.isEmpty() === false) {
-        stack.push(tempStack.pop());
+      op1 = myStack.pop();
+      op2 = myStack.pop();
+      if (exp[i] === "+") {
+        myStack.push(op2 + op1);
+      } else if (exp[i] === "-") {
+        myStack.push(op2 - op1);
+      } else if (exp[i] === "*") {
+        myStack.push(op2 * op1);
+      } else if (exp[i] === "/") {
+        myStack.push(op2 / op1);
       }
-      tempStack.push(value);
     }
   }
-  while (tempStack.isEmpty() === false) {
-    stack.push(tempStack.pop());
-  }
-  console.log(stack);
-  return stack;
+  return myStack.pop();
 }
-
-var mystack = new Stack();
-mystack.push(1);
-mystack.push(10);
-mystack.push(5);
-mystack.push(7);
-mystack.push(2);
-sortStack(mystack);
+console.log(evaluatePostfix("921*-8-4+"));

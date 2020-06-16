@@ -623,3 +623,56 @@ The outer and inner loops both traverse all the n elements of the stack. Hence, 
 </p>
 
 </details>
+
+<details><summary>Evaluate Postfix Expression Using a Stack
+</summary>
+<p>
+
+```
+https://www.youtube.com/watch?v=a6YC386fNEA
+
+1.Scan expression character by character,
+2.If character is a number push it in stack
+3.If character is operator then pop two elements from stack
+perform the operation and put the result back in stack
+At the end, Stack will contain result of whole expression.
+
+```
+
+```
+
+```
+
+```javascript
+function evaluatePostfix(exp) {
+  let myStack = new Stack();
+  let op1, op2;
+  for (var i = 0; i < exp.length; i++) {
+    if (!isNaN(parseInt(exp[i], 10))) {
+      myStack.push(parseInt(exp[i], 10));
+    } else {
+      op1 = myStack.pop();
+      op2 = myStack.pop();
+      if (exp[i] === "+") {
+        myStack.push(op2 + op1);
+      } else if (exp[i] === "-") {
+        myStack.push(op2 - op1);
+      } else if (exp[i] === "*") {
+        myStack.push(op2 * op1);
+      } else if (exp[i] === "/") {
+        myStack.push(op2 / op1);
+      }
+    }
+  }
+  return myStack.pop();
+}
+console.log(evaluatePostfix("921*-8-4+"));
+```
+
+```
+Time complexity is O(n)
+```
+
+</p>
+
+</details>
