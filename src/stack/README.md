@@ -512,3 +512,60 @@ console.log(queue);
 </p>
 
 </details>
+
+<details><summary>Implement a Queue Using Stacks
+</summary>
+<p>
+
+```
+https://www.youtube.com/watch?v=ma1S6vtkw9I
+
+1. to do this we will maintain 2 stacks,
+one for enquee and other for dequee.
+for enque push to 1 stack. dequing do it in other stack
+if dequing stack is empty then engue the second stacks from 1st stack and do it.
+```
+
+```
+
+```
+
+```javascript
+class queue {
+  constructor(size) {
+    this.tempStack = new stack();
+    this.mainStack = new stack();
+  }
+  enquee(value) {
+    this.mainStack.push(value);
+  }
+  dequeue() {
+    if (this.tempStack.isEmpty() && this.mainStack.isEmpty()) {
+      return null;
+    }
+    if (this.tempStack.isEmpty()) {
+      while (this.mainStack.isEmpty() === false) {
+        this.tempStack.push(this.mainStack.pop());
+      }
+      return this.tempStack.pop();
+    }
+    return this.tempStack.pop();
+  }
+}
+
+var q1 = new queue();
+q1.enquee(1);
+q1.enquee(2);
+q1.enquee(3);
+console.log(q1.dequeue());
+console.log(q1.dequeue());
+console.log(q1.dequeue());
+```
+
+```
+Time complexity of the dequeue operation becomes O(n)O(n), while the time complexity for the enqueue operation is O(1).
+```
+
+</p>
+
+</details>
