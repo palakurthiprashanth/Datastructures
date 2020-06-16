@@ -308,3 +308,80 @@ The time complexity of this solution is in O(n)O(n)
 </p>
 
 </details>
+
+<details><summary>Implementing Two Stacks Using One Array
+</summary>
+<p>
+
+```
+maintaing 2 tops in array.
+top1 grows from left
+top2 grows from right
+push1/push2 - we can push till top1<top2-1 //as it is max lengh
+pop1 - top1>=0
+pop2 - top2 <size
+```
+
+```
+
+```
+
+```javascript
+class twostacks {
+  constructor(s) {
+    this.arr = [];
+    this.size = s;
+    this.top1 = -1;
+    this.top2 = s;
+  }
+  push1(value) {
+    if (this.top1 < this.top2 - 1) {
+      this.top1++;
+      this.arr[this.top1] = value;
+    }
+  }
+  push2(value) {
+    if (this.top1 < this.top2 - 1) {
+      this.top2--;
+      this.arr[this.top2] = value;
+    }
+  }
+  pop1() {
+    if (this.top1 >= 0) {
+      let value = this.arr[this.top1];
+      this.top1--;
+      return value;
+    } else {
+      return -1;
+    }
+  }
+  pop2() {
+    if (this.top2 < this.size) {
+      let value = this.arr[this.top2];
+      this.top2++;
+      return value;
+    } else {
+      return -1;
+    }
+  }
+  print() {
+    console.log(this.arr);
+  }
+}
+
+let mystack = new twostacks(3);
+mystack.push1(0);
+mystack.push2(2);
+mystack.push1(1);
+mystack.print(); // 0,1,2
+mystack.pop1();
+mystack.print();
+```
+
+```
+All the operations take constant time because the array is being indexed and not resized.
+```
+
+</p>
+
+</details>

@@ -1,49 +1,49 @@
-class Queue {
-  constructor() {
-    this.items = [];
-    this.front = null;
-    this.back = null;
+class twostacks {
+  constructor(s) {
+    this.arr = [];
+    this.size = s;
+    this.top1 = -1;
+    this.top2 = s;
   }
-
-  isEmpty() {
-    return this.items.length === 0;
-  }
-
-  getFront() {
-    if (this.items.length !== 0) {
-      return this.items[0];
-    } else return null;
-  }
-
-  size() {
-    return this.items.length;
-  }
-
-  enqueue(element) {
-    this.items.push(element);
-  }
-
-  dequeue() {
-    if (this.items.length === 0) {
-      return null;
-    } else {
-      return this.items.shift();
+  push1(value) {
+    if (this.top1 < this.top2 - 1) {
+      this.top1++;
+      this.arr[this.top1] = value;
     }
   }
-}
-
-function findBin(n) {
-  let result = [];
-  let myQueue = new Queue();
-  myQueue.enqueue(1);
-  for (var i = 0; i < n; i++) {
-    result.push(myQueue.dequeue());
-    var s1 = result[i] + "0";
-    var s2 = result[i] + "1";
-    myQueue.enqueue(s1);
-    myQueue.enqueue(s2);
+  push2(value) {
+    if (this.top1 < this.top2 - 1) {
+      this.top2--;
+      this.arr[this.top2] = value;
+    }
   }
-  return result;
+  pop1() {
+    if (this.top1 >= 0) {
+      let value = this.arr[this.top1];
+      this.top1--;
+      return value;
+    } else {
+      return -1;
+    }
+  }
+  pop2() {
+    if (this.top2 < this.size) {
+      let value = this.arr[this.top2];
+      this.top2++;
+      return value;
+    } else {
+      return -1;
+    }
+  }
+  print() {
+    console.log(this.arr);
+  }
 }
 
-console.log(findBin(3));
+let mystack = new twostacks(3);
+mystack.push1(0);
+mystack.push2(2);
+mystack.push1(1);
+mystack.print(); // 0,1,2
+mystack.pop1();
+mystack.print();
