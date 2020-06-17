@@ -38,3 +38,21 @@ https://www.youtube.com/watch?v=i-_vWc4Pcck
 https://www.youtube.com/watch?v=hdj2b8aoSNM
 https://www.youtube.com/watch?v=Cjk_VSNKJxE
 ```
+
+## Graph representation
+
+In linked list representation , graph class create the
+vertces number of linked lists.
+
+```javascript
+class Graph {
+  constructor(vertices) {
+    this.vertices = vertices;
+    this.result = [];
+    for (var i = 0; i < vertices.length; i++) {
+      var list = new LinkedList();
+      this.result.push(list);
+    }
+  }
+}
+```
