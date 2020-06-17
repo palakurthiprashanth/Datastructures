@@ -14,9 +14,15 @@ Edge: link between two vertices , it can be uni-directional or bi-directional.
 ## Graph terminologies
 
 In-Degree : No of inward indices.
+
 Out-Degree: No of outward indices.
+
 Parallel edges : Two undirected edges are parallel​ if they have the same end
+
 vertices. Two directed edges are parallel if they have the same origin and
+
 destination.
+
 Self Loop: This occurs when an edge starts and ends on the same vertex.
+
 Adjacency: Two vertices are said to be adjacent if there is an edge connecting them directly.
