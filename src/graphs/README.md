@@ -26,3 +26,14 @@ destination.
 Self Loop: This occurs when an edge starts and ends on the same vertex.
 
 Adjacency: Two vertices are said to be adjacent if there is an edge connecting them directly.
+
+## WHich data scructure to represent graph
+
+1. Matrix representation
+2. List representation
+
+```
+https://www.youtube.com/watch?v=AmXGNdoL_Jc
+https://www.youtube.com/watch?v=i-_vWc4Pcck
+https://www.youtube.com/watch?v=hdj2b8aoSNM
+```
