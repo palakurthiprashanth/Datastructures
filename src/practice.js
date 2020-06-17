@@ -34,26 +34,38 @@ class Stack {
     } else return null;
   }
 }
-function evaluatePostfix(exp) {
-  let myStack = new Stack();
-  let op1, op2;
-  for (var i = 0; i < exp.length; i++) {
-    if (!isNaN(parseInt(exp[i], 10))) {
-      myStack.push(parseInt(exp[i], 10));
+class minStack {
+  constructor() {
+    this.minimumstack = new Stack();
+    this.mainstack = new Stack();
+  }
+  pop() {
+    this.minimumstack.pop();
+    return this.mainstack.pop();
+  }
+  push(value) {
+    this.mainstack.push(value);
+    if (this.minimumstack.isEmpty()) {
+      this.minimumstack.push(value);
+      return;
+    }
+    if (value < this.minimumstack.getTop()) {
+      this.minimumstack.push(value);
     } else {
-      op1 = myStack.pop();
-      op2 = myStack.pop();
-      if (exp[i] === "+") {
-        myStack.push(op2 + op1);
-      } else if (exp[i] === "-") {
-        myStack.push(op2 - op1);
-      } else if (exp[i] === "*") {
-        myStack.push(op2 * op1);
-      } else if (exp[i] === "/") {
-        myStack.push(op2 / op1);
-      }
+      this.minimumstack.push(this.minimumstack.getTop());
     }
   }
-  return myStack.pop();
+  min() {
+    return this.minimumstack.getTop();
+  }
 }
-console.log(evaluatePostfix("921*-8-4+"));
+
+var stack = new minStack();
+stack.push(5);
+stack.push(2);
+stack.push(4);
+stack.push(1);
+stack.push(3);
+stack.push(9);
+
+console.log("minimum value: ", stack.min());

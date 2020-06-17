@@ -676,3 +676,149 @@ Time complexity is O(n)
 </p>
 
 </details>
+
+<details><summary>Next Greater Element Using a Stack
+</summary>
+<p>
+
+```
+  The next greater element is the first element towards
+  the right, which is greater than the current element. For example, in the array [1, 3, 8, 4, 10, 5],
+  the next greater element of 3 is 8, and the next
+  greater element for 8 is 10.
+
+  i/p => arr = [4, 6, 3, 2, 8, 1]
+  o/p=> {6, 8, 8, 8, -1, -1}
+```
+
+```
+
+```
+
+```javascript
+```
+
+```
+Time complexity is O(n)
+```
+
+</p>
+
+</details>
+
+<details><summary>Check Balanced Parentheses Using Stack
+</summary>
+<p>
+
+```
+ Basically checkk for every closing parenthesis there should be opening one
+```
+
+```
+
+```
+
+```javascript
+function isBalanced(exp) {
+  let tempStack = new Stack();
+  for (var i = 0; i < exp.length; i++) {
+    // for every closing bracket check for open bracke.
+    if (exp[i] === "}" || exp[i] === ")" || exp[i] === "]") {
+      // stack is empty so no opening braces
+      if (tempStack.isEmpty()) {
+        return false;
+      }
+      // if value existis in stack then take that value
+      let output = tempStack.pop();
+      //  if closing braces doent have opening braces
+      if (
+        (exp[i] === "}" && output !== "{") ||
+        (exp[i] === ")" && output !== "(") ||
+        (exp[i] === "]" && output !== "[")
+      ) {
+        return false;
+      }
+    } else {
+      //if expression is opening brace then push to stack
+      tempStack.push(exp[i]);
+    }
+  }
+  // after iteration if there are still open braces in stack then not balanced
+  if (tempStack.isEmpty() === false) {
+    return false;
+  }
+  return true;
+}
+var inputString = "{()}";
+console.log(inputString);
+console.log(isBalanced(inputString));
+```
+
+```
+Time complexity is O(n)
+```
+
+</p>
+
+</details>
+
+<details><summary>min() Function Using a Stack
+</summary>
+<p>
+
+```
+ 1. maintain 2 stacks main ,min
+ 2. push values to main directly, while to min stack chack f vale is less than top
+ of min stack if yes push value else push again the top value
+```
+
+```
+https://www.youtube.com/watch?v=ufwPuyxkNVE&t=433s
+
+```
+
+```javascript
+class minStack {
+  constructor() {
+    this.minimumstack = new Stack();
+    this.mainstack = new Stack();
+  }
+  pop() {
+    this.minimumstack.pop();
+    return this.mainstack.pop();
+  }
+  push(value) {
+    this.mainstack.push(value);
+    if (this.minimumstack.isEmpty()) {
+      this.minimumstack.push(value);
+      return;
+    }
+    if (value < this.minimumstack.getTop()) {
+      this.minimumstack.push(value);
+    } else {
+      this.minimumstack.push(this.minimumstack.getTop());
+    }
+  }
+  min() {
+    return this.minimumstack.getTop();
+  }
+}
+
+var stack = new minStack();
+stack.push(5);
+stack.push(2);
+stack.push(4);
+stack.push(1);
+stack.push(3);
+stack.push(9);
+
+console.log("minimum value: ", stack.min());
+```
+
+```
+Time complexity is O(1)
+```
+
+</p>
+
+</details>
