@@ -137,3 +137,61 @@ output;
 |2| => [3] -> [0] -> null
 |3| => [2] -> [1] -> null
 ```
+
+<details><summary>BFS Graph with queue
+</summary>
+<p>
+
+```
+https://www.youtube.com/watch?v=mXUZ3jeaQLo
+```
+
+```
+
+```
+
+```javascript
+function bfsTraversal(g, source) {
+  let res = "";
+  let visited = [];
+  // make an unvisited array
+  for (var i = 0; i < g.vertices; i++) {
+    visited.push(false);
+  }
+  for (var i = 0; i < g.vertices; i++) {
+    if (!visited[i]) {
+      let queue = new Queue();
+      queue.enqueue(i);
+      visited[source] = true;
+      while (queue.isEmpty() === false) {
+        let popedvalue = queue.dequeue();
+        res = res + String(popedvalue);
+        let adjList = g.list[popedvalue].getHead();
+        while (adjList !== null) {
+          queue.enqueue(adjList.data);
+          visited[adjList.data] = true;
+          adjList = adjList.nextElement;
+        }
+      }
+    }
+  }
+  console.log(res);
+  return res;
+}
+
+let g1 = new Graph(6);
+g1.addEdge(1, 2);
+g1.addEdge(1, 3);
+g1.addEdge(2, 4);
+g1.addEdge(2, 5);
+g1.printGraph();
+bfsTraversal(g1, 0); //013254
+```
+
+```
+Since this algorithm traverses the whole graph once, its time complexity is O(V + E).
+```
+
+</p>
+
+</details>

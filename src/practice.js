@@ -29,8 +29,8 @@ class LinkedList {
     } else {
       let temp = this.head;
       while (temp != null) {
-        process.stdout.write(String(temp.data));
-        process.stdout.write(" -> ");
+        // process.stdout.write(String(temp.data));
+        //process.stdout.write(" -> ");
         temp = temp.nextElement;
       }
       console.log("null");
@@ -122,7 +122,7 @@ class LinkedList {
     //else get pointer to head
     let currentNode = this.head;
     // if first node's is the node to be deleted, delete it and return true
-    if (currentNode.data == value) {
+    if (currentNode.data === value) {
       this.head = currentNode.nextElement;
       return true;
     }
@@ -130,7 +130,7 @@ class LinkedList {
     // else traverse the list
     while (currentNode.nextElement != null) {
       // if a node whose next node has the value as data, is found, delete it from the list and return true
-      if (currentNode.nextElement.data == value) {
+      if (currentNode.nextElement.data === value) {
         currentNode.nextElement = currentNode.nextElement.nextElement;
         return true;
       }
@@ -161,38 +161,126 @@ class LinkedList {
     return this;
   }
 }
+class Queue {
+  constructor(mySize) {
+    this.items = [];
+    this.size = mySize;
+    this.front = 0;
+    this.back = -1;
+  }
 
+  isFull() {
+    return this.items.length >= this.size;
+  }
+
+  isEmpty() {
+    return this.items.length === 0;
+  }
+
+  getFront() {
+    if (this.items.length !== 0) {
+      return this.items[0];
+    } else {
+      console.log("No elements in the queue");
+    }
+  }
+
+  enqueue(element) {
+    if (this.items.length >= this.size) {
+      console.log("Queue is full");
+    } else {
+      this.items.push(element);
+    }
+  }
+
+  dequeue() {
+    if (this.items.length === 0) {
+      console.log("No elements");
+    } else {
+      return this.items.shift();
+    }
+  }
+}
 class Graph {
   constructor(vertices) {
     this.vertices = vertices;
+
     this.list = [];
-    for (var i = 0; i < vertices; i++) {
+
+    var it;
+    for (it = 0; it < vertices; it++) {
       let temp = new LinkedList();
       this.list.push(temp);
     }
   }
+
+  addEdge(source, destination) {
+    if (source < this.vertices && destination < this.vertices)
+      this.list[source].insertAtHead(destination);
+    return this;
+  }
+
   printGraph() {
     console.log(">>Adjacency List of Directed Graph<<");
     var i;
     for (i = 0; i < this.list.length; i++) {
-      console.log("|" + String(i) + "| => ");
+      //process.stdout.write("|" + String(i) + "| => ");
       let temp = this.list[i].getHead();
       while (temp != null) {
-        console.log("[" + String(temp.data) + "] -> ");
+        // process.stdout.write("[" + String(temp.data) + "] -> ");
         temp = temp.nextElement;
       }
       console.log("null ");
     }
   }
-  addEdge(source, destination) {
-    if (source < this.vertices && destination < this.vertices) {
-      this.list[source].insertAtHead(destination);
+
+  strGraph() {
+    let str = "";
+    var i;
+    for (i = 0; i < this.list.length; i++) {
+      str = str + "|" + String(i) + "| => ";
+      let temp = this.list[i].getHead();
+      while (temp != null) {
+        str += "[" + String(temp.data) + "] -> ";
+        temp = temp.nextElement;
+      }
+      str += "null ";
     }
+    return str;
   }
 }
-let g = new Graph(4);
-g.addEdge(0, 1);
-g.addEdge(0, 2);
-g.addEdge(1, 3);
-g.addEdge(2, 3);
-g.printGraph();
+function bfsTraversal(g, source) {
+  let res = "";
+  let visited = [];
+  // make an unvisited array
+  for (var i = 0; i < g.vertices; i++) {
+    visited.push(false);
+  }
+  for (var i = 0; i < g.vertices; i++) {
+    if (!visited[i]) {
+      let queue = new Queue();
+      queue.enqueue(i);
+      visited[source] = true;
+      while (queue.isEmpty() === false) {
+        let popedvalue = queue.dequeue();
+        res = res + String(popedvalue);
+        let adjList = g.list[popedvalue].getHead();
+        while (adjList !== null) {
+          queue.enqueue(adjList.data);
+          visited[adjList.data] = true;
+          adjList = adjList.nextElement;
+        }
+      }
+    }
+  }
+  console.log(res);
+  return res;
+}
+
+let g1 = new Graph(6);
+g1.addEdge(1, 2);
+g1.addEdge(1, 3);
+g1.addEdge(2, 4);
+g1.addEdge(2, 5);
+g1.printGraph();
+bfsTraversal(g1, 0); //013254
