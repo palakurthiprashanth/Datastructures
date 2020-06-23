@@ -88,3 +88,30 @@ class BinarySearchTree {
   }
 }
 ```
+
+## Traversal strategies
+
+1. pre-Order Traversal
+
+In pre-order traversal, the elements are traversed in “root-left-right” order
+
+```javascript
+preOrderPrint(currentNode) {
+  //if the currentNode IS NOT EQUAL to null
+    if (currentNode!==null) {
+        //print its value
+        console.log(currentNode.val);
+        //make recursive call to the left subtree
+        this.preOrderPrint(currentNode.leftChild);
+         //make recursive call to the right subtree
+        this.preOrderPrint(currentNode.rightChild);
+    }
+  //if the currentNode IS EQUAL to null, then
+  //we simply return
+}
+```
+
+```
+Time Complexity
+This is a linear-time algorithm, i.e., the time complexity of preOrderPrint() is in O(n) because a total of nn recursive calls occur.
+```

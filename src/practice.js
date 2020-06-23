@@ -9,6 +9,13 @@ class BinarySearchTree {
   constructor(rootValue) {
     this.root = rootValue;
   }
+  preOrderPrint(currentNode) {
+    if (currentNode !== null) {
+      console.log(currentNode);
+      this.preOrderPrint(currentNode.leftChild);
+      this.preOrderPrint(currentNode.rightChild);
+    }
+  }
   insert(newValue) {
     if (this.root === null) {
       this.root = newValue;
