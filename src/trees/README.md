@@ -115,3 +115,72 @@ preOrderPrint(currentNode) {
 Time Complexity
 This is a linear-time algorithm, i.e., the time complexity of preOrderPrint() is in O(n) because a total of nn recursive calls occur.
 ```
+
+## In-Order Traversal
+
+In in-order traversal, the elements are traversed in “left-root-right” order
+It is like ascending order.
+
+```javascript
+inOrderprint(currentNode) {
+  //if the currentNode IS NOT EQUAL to null
+    if (currentNode!==null) {
+
+        //make recursive call to the left subtree
+        this.inOrderPrint(currentNode.leftChild);
+       //print the value of the currentNode
+        console.log(currentNode.val);
+         //make recursive call to the right subtree
+        this.inOrderPrint(currentNode.rightChild);
+    }
+  //if the currentNode IS EQUAL to null, then
+  //we simply return
+}
+```
+
+## Post order Traversal.
+
+1. In the post-order traversal, the current node will be visited after its children nodes. Therefore, it is called the post-order traversal.
+2. The root of the tree will always be the last one to be visited.
+
+3.In post-order traversal, the elements are traversed in “left-right-root” order
+
+```javascript
+postOrderPrint(currentNode) {
+  //if the currentNode IS NOT EQUAL to null
+    if (currentNode!==null) {
+        //make recursive call to the left subtree
+        this.postOrderPrint(currentNode.leftChild);
+         //make recursive call to the right subtree
+        this.postOrderPrint(currentNode.rightChild);
+        //print its value
+        console.log(currentNode.val);
+    }
+  //if the currentNode IS EQUAL to null, then
+  //we simply return from the function
+}
+```
+
+## Iterative Search Implementation
+
+```javascript
+search(value) {
+    //let's start with the root
+    var currentNode = this.root;
+    while (currentNode && (currentNode.val != value)) {
+      //the loop will run until the currentNode IS NOT null
+        //and until we get to our value
+        if (value < currentNode.val) {
+            //traverse to the left subtree
+            currentNode = currentNode.leftChild;
+        } else { //traverse to the right subtree
+            currentNode = currentNode.rightChild;
+
+        }
+
+    }
+    //after the loop, we'll have either the searched value
+    //or null in case the value was not found
+    return currentNode;
+}
+```

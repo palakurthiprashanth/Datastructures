@@ -16,6 +16,17 @@ class BinarySearchTree {
       this.preOrderPrint(currentNode.rightChild);
     }
   }
+  search(value) {
+    var currentNode = this.root;
+    while (currentNode !== null && currentNode.val !== value) {
+      if (value < currentNode.val) {
+        currentNode = currentNode.leftChild;
+      } else {
+        currentNode = currentNode.rightChild;
+      }
+    }
+    return currentNode;
+  }
   insert(newValue) {
     if (this.root === null) {
       this.root = newValue;
