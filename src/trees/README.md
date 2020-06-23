@@ -31,3 +31,21 @@ File system, Hierarchy systems.
 ```
 https://awwapp.com/b/ujtvkz9j3reu7/
 ```
+
+## BST Implementation
+
+```javascript
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.leftChild = null;
+    this.rightChild = null;
+  }
+}
+
+class BinarySearchTree {
+  constructor(rootValue) {
+    this.root = new Node(rootValue);
+  }
+}
+```
