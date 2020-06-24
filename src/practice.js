@@ -77,6 +77,14 @@ class BinarySearchTree {
         parent.rightChild = null;
         return true;
       }
+    } else if (currentNode.rightChild === null) {
+      if (currentNode.val < parent.val) {
+        parent.leftChild = currentNode.leftChild;
+        return true;
+      } else {
+        parent.rightChild = currentNode.rightChild;
+        return true;
+      }
     }
   }
 }

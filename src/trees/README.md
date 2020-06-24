@@ -269,3 +269,179 @@ delete(currentNode, value) {
     }
 }
 ```
+
+4.Deleting a Node with a Left Child Only / Right child only
+
+```javascript
+delete(currentNode, value){
+    //case 1: checking for the empty tree
+    // if rootNode equals Null
+    if (currentNode == null) {
+        return false;
+    }
+    //start traversing the tree
+    //until we find the value to be deleted
+    //or end up with a null node
+    var parentNode;
+    while (currentNode && (currentNode.val != value)) {
+
+        parentNode = currentNode;
+        //saving the previous node as parentNode before the currentNode is updated
+        if (value < currentNode.val) {
+
+            currentNode = currentNode.leftChild;
+        } else {
+            currentNode = currentNode.rightChild;
+
+        }
+
+    }
+    //case 2 : currentNode IS EQUAL to null. Value not found!
+    if (currentNode === null) {
+        return false;
+    } else if (currentNode.leftChild == null && currentNode.rightChild == null) {
+        //case 3: currentNode is a leaf node
+        //i.e. right and left EQUAL to null
+        //now checking if the node to be deleted
+        //is a left or a right child of its parent
+        if(currentNode.val==this.root.val){
+            this.root = null;
+            return true;
+        }
+        else if (currentNode.val < parentNode.val) {
+            parentNode.leftChild = null;
+            return true;
+        } else {
+            parentNode.rightChild = null;
+            return true;
+        }
+    } else if (currentNode.rightChild == null) {
+        //if the node to be deleted has a left child only
+        //we'll link the left child to the parent of
+        //the node to be deleted
+        if(currentNode.val==this.root.val){
+            this.root = currentNode.leftChild;
+            return true;
+        }
+        else if (currentNode.leftChild.val < parentNode.val) {
+            parentNode.leftChild = currentNode.leftChild;
+            return true;
+        } else {
+            parentNode.rightChild = currentNode.leftChild;
+            return true;
+        }
+
+    } else if (currentNode.leftChild = null) {
+        //if the node to be deleted has a right child only
+        //we'll link the right child to the parent of
+        //the node to be deleted
+        if(currentNode.val==this.root.val){
+            this.root = currentNode.rightChild;
+            return true;
+        }
+        else if (currentNode.rightChild.val < parentNode.val) {
+            parentNode.leftChild = currentNode.rightChild;
+            return true;
+        } else {
+            parentNode.rightChild = currentNode.rightChild;
+            return true;
+        }
+    }
+}
+```
+
+5. Deleting a Node with Two Children
+   Here either we replace its value with smallest node in right sub tree.
+
+   ```javascript
+     delete(currentNode, value) {
+        //case 1: checking for the empty tree
+        // if rootNode equals Null
+        if (currentNode == null) {
+            return false;
+        }
+        //start traversing the tree
+        //until we find the value to be deleted
+        //or end up with a null node
+        var parentNode;
+        while (currentNode && (currentNode.val != value)) {
+
+            parentNode = currentNode;
+            //saving the previous node as parentNode before the currentNode is updated
+            if (value < currentNode.val) {
+
+                currentNode = currentNode.leftChild;
+            } else {
+                currentNode = currentNode.rightChild;
+
+            }
+
+        }
+        //case 2 : currentNode IS EQUAL to null. Value not found!
+        if (currentNode === null) {
+            return false;
+        } else if (currentNode.leftChild == null && currentNode.rightChild == null) {
+            //case 3: currentNode is a leaf node
+            //i.e. right and left EQUAL to null
+            //now checking if the node to be deleted
+            //is a left or a right child of its parent
+            if(currentNode.val==this.root.val){
+                this.root=null;
+                return true;
+            }
+            else if (currentNode.val < parentNode.val) {
+                parentNode.leftChild = null;
+                return true;
+            } else {
+                parentNode.rightChild = null;
+                return true;
+            }
+        } else if (currentNode.rightChild == null) {
+            //if the node to be deleted has a left child only
+            //we'll link the left child to the parent of
+            //the node to be deleted
+            if(currentNode.val==this.root.val){
+                this.root=currentNode.leftChild;
+                return true;
+            }else if (currentNode.leftChild.val < parentNode.val) {
+                parentNode.leftChild = currentNode.leftChild;
+                return true;
+            } else {
+                parentNode.rightChild = currentNode.leftChild;
+                return true;
+            }
+
+        } else if (currentNode.leftChild == null) {
+            //if the node to be deleted has a right child only
+            //we'll link the right child to the parent of
+            //the node to be deleted
+            if(currentNode.val==this.root.val){
+                this.root = currentNode.rightChild;
+                return true;
+            }else if (currentNode.rightChild.val < parentNode.val) {
+                parentNode.leftChild = currentNode.rightChild;
+                return true;
+            } else {
+                parentNode.rightChild = currentNode.rightChild;
+                return true;
+            }
+        } else { //case where the node to be deleted has 2 children
+            //starting point for the right sub tree
+            var minRight = currentNode.rightChild;
+            //traverse to find the left most node in the right subtree
+            while (minRight.leftChild !== null) {
+                minRight = minRight.leftChild;
+            }
+            var temp=minRight.val;
+            //delete the left most node in the right subtree
+            //by calling in the same delete function
+            //to cater for whether it has children or not
+            this.delete(this.root, minRight.val);
+             //replace the currentNode with left most node in the right subtree
+            currentNode.val = temp;
+
+
+            return true;
+        }
+    }
+   ```
