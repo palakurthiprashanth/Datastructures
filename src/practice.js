@@ -53,8 +53,9 @@ class BinarySearchTree {
     if (currentNode === null) {
       return false;
     }
-
+    var parent;
     while (currentNode !== null && currentNode !== value) {
+      parent = currentNode;
       if (value < currentNode) {
         currentNode = currentNode.leftChild;
       } else {
@@ -64,6 +65,18 @@ class BinarySearchTree {
     //case 2 : currentNode IS EQUAL to null. Value not found!
     if (currentNode === null) {
       return false;
+    } else if (
+      currentNode.leftChild === null &&
+      currentNode.rightChild === null
+    ) {
+      if (currentNode.val < parent.val) {
+        parent.leftChild = null;
+        return true;
+      }
+      if (currentNode.val > parent.val) {
+        parent.rightChild = null;
+        return true;
+      }
     }
   }
 }
