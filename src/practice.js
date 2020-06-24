@@ -49,4 +49,9 @@ class BinarySearchTree {
       parent.rightChild = new Node(newValue);
     }
   }
+  delete(currentNode, value) {
+    if (currentNode === null) {
+      return false;
+    }
+  }
 }

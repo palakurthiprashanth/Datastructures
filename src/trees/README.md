@@ -184,3 +184,15 @@ search(value) {
     return currentNode;
 }
 ```
+
+## Binary tree deletion
+
+1. Deleting empty tree
+
+```javascript
+delete(currentNode, value) {
+    if (currentNode === null) {
+      return false;
+    }
+  }
+```
