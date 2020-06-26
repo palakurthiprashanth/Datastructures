@@ -647,12 +647,17 @@ So for searching AVL is better , for insertion , deletion is faster in RED-Black
 ## RULES
 
 1. if tree is empty create node with color black as root
+
    2 . if tree is not empty , then create a node as leaf with
    color RED
+
    3.if parent of new node is black then insertion is done
+
    4.If parent of new node is RED , then check color of parent's sibbling
    of new node
+
    a. if parents' sibbling is black or NULLthen do suitable rotation & recolour
+
    b. if parent's sibbling is RED then change the color of parent and parents
    sibling and also check if parents parent is not root node then recolor
    and recheck it.
