@@ -616,3 +616,43 @@ console.log("Delete 9!")
 console.log(BST.delete(BST.root, 9));
 BST.inOrderPrint(BST.root);
 ````
+
+## RED-Black tree
+
+DS is way of organizing data so we can perform operations in less time..
+It is subset of binary search tree.
+
+In BST searching takes place av of logn
+
+Search in BST takes less time as if value is less then we can search in left subset of tree so we are skipping right section of tree. so no need to compare with all elements.Time complexity is based on height and time complexity of height is logn so BST searching is O(logn).
+
+RED-Black tree is self balancing tree , AVL is also self balancing also time complexity is o(logn)
+
+AVL tree, if tree is very large then it might take many rotations to balance.
+
+Red black tree takes max of 2 rotations or re coloring required.
+
+AVL trees are more balanced of red black tree.
+
+So for searching AVL is better , for insertion , deletion is faster in RED-Black as it requires few rotations.
+
+## properties
+
+1 .Root node should be black
+2 . if parent is red , childs should be black
+
+3. Cout of blacks from any node to its NULL
+   should be same
+
+## RULES
+
+1. if tree is empty create node with color black as root
+   2 . if tree is not empty , then create a node as leaf with
+   color RED
+   3.if parent of new node is black then insertion is done
+   4.If parent of new node is RED , then check color of parent's sibbling
+   of new node
+   a. if parents' sibbling is black or NULLthen do suitable rotation & recolour
+   b. if parent's sibbling is RED then change the color of parent and parents
+   sibling and also check if parents parent is not root node then recolor
+   and recheck it.
