@@ -639,6 +639,7 @@ So for searching AVL is better , for insertion , deletion is faster in RED-Black
 ## properties
 
 1 .Root node should be black
+
 2 . if parent is red , childs should be black
 
 3. Cout of blacks from any node to its NULL
