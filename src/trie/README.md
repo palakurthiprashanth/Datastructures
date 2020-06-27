@@ -107,3 +107,30 @@ Case 2: Word Exists as a Substring
 
 This is the case where our word can be found as a substring of another word, but the isEndWord property for it has been set to false.Therefor word will not be detected.
 if there exists "bed" in trie then "be" will not be detected.
+
+Case 3: Word Exists
+
+The success case is when there already exists a path from the root to the node of the last character and the node is also marked as endOfWord
+
+## Algorithm
+
+1. Basically we will get the search word.
+2. check if index of individual key is not null
+3. And also check if it leaf node i.e endWord is true
+
+```javascript
+search(key) {
+    let index = 0;
+    let currentNode = this.root;
+    for (var i = 0; i < key.length; i++) {
+      index = this.getIndex(key[i]);
+      if (currentNode.children[index] === null) {
+        return false;
+      }
+    }
+    if (currentNode !== null && currentNode.isEndWord) {
+      return true;
+    }
+    return false;
+  }
+```

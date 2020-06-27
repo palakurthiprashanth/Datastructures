@@ -35,6 +35,21 @@ class Trie {
         currentNode.children[index] = key[i];
       }
     }
+    currentNode.markAsLeafNode();
+  }
+  search(key) {
+    let index = 0;
+    let currentNode = this.root;
+    for (var i = 0; i < key.length; i++) {
+      index = this.getIndex(key[i]);
+      if (currentNode.children[index] === null) {
+        return false;
+      }
+    }
+    if (currentNode !== null && currentNode.isEndWord) {
+      return true;
+    }
+    return false;
   }
 }
 
@@ -48,4 +63,5 @@ console.log(keysList);
 for (var i = 0; i < keysList.length; i++) {
   t.insert(keysList[i]);
 }
-console.log(t);
+console.log(t.search("the"));
+console.log(t.search("these"));
