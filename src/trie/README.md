@@ -134,3 +134,7 @@ search(key) {
     return false;
   }
 ```
+
+```
+Time complexity is O(n).
+```
