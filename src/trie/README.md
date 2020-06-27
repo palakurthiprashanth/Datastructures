@@ -138,3 +138,57 @@ search(key) {
 ```
 Time complexity is O(n).
 ```
+
+## Deletion in a Trie
+
+Case 1: Word with No Suffix or Prefix
+
+If the word to be deleted has no suffix or prefix and all the character nodes of this word have no children, then we will delete all nodes up to the root.
+
+Case 2: Word is a Prefix
+
+If the word to be deleted is prefix of other word then just simply unmark the end word
+If both the and their exists then to delete the , simply unmark e.
+
+Case 3: Word Has a Common Prefix
+It there exists both their and the and to remove their , simpley remove "ir"
+
+## Challenges
+
+<details><summary>Total Number of Words in a Trie
+</summary>
+<p>
+```
+Calculate no of isEndWord: true in all children
+```
+```javascript
+function totalWords(rootN) {
+  let result = 0;
+  if (rootN.isEndWord) {
+    result = result + 1;
+  }
+  for (var i = 0; i < 26; i++) {
+    if (rootN.children[i] !== null) {
+      result = result + totalWords(rootN.children[i]);
+    }
+  }
+  return result;
+}
+
+let t = new Trie();
+t.insert("ab");
+t.insert("ba");
+console.log(totalWords(t.root));//2
+
+```
+
+```
+
+Time complexity is O(n)
+
+```
+
+</p>
+
+</details>
+```
