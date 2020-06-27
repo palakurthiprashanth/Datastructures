@@ -59,3 +59,40 @@ If new word share a common path with already existing path like if trie has a pa
 This occurs if your word is a substring of another word that already exists in the trie.
 
 For example, if we want to insert the​ word the in the trie which already contains their, the path for the already exists. Therefore, we simply need to set the value of isEndWord to true at e in order to represent the end of the word
+
+## insert
+
+```javascript
+insert(key){
+    //None keys are not allowed
+    if (key == null){
+      return;
+    }
+
+    key = key.toLowerCase();  //Keys are stored in lowercase
+    let currentNode = this.root;
+    let index = 0;          //To store the character index
+
+    //Iterate the trie with the given character index,
+    //If the index points to null
+    //simply create a TrieNode and go down a level
+    for (var level=0; level<key.length; level++){
+      index = this.getIndex(key[level]);
+
+      if (currentNode.children[index] == null){
+        currentNode.children[index] = new TrieNode(key[level]);
+        console.log(String(key[level]) + " inserted");
+      }
+      currentNode = currentNode.children[index];
+    }
+
+    //Mark the end character as leaf node
+    currentNode.markAsLeaf();
+    console.log("'" + key + "' inserted");
+  }
+
+```
+
+```
+Time complexity is O(n)
+```
