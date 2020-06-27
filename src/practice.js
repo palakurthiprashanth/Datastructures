@@ -134,12 +134,26 @@ class BinarySearchTree {
   }
 }
 
-findMin(currentNode) {
-  if (currentNode === null) {
-    return false;
+function findKthMax(rootNode, k) {
+  var tree = [];
+  tree = inOrderTraverse(rootNode, tree);
+  console.log(tree);
+  if (tree.length - k >= 0 && k > 0) {
+    return tree[tree.length - k];
   }
-  while(currentNode!==null) {
-    currentNode = currentNode.leftChild;
-  }
-  return currentNode.val;
+  return null;
 }
+function inOrderTraverse(rootNode, tree) {
+  var temp;
+  if (rootNode !== null) {
+    temp = inOrderTraverse(rootNode.leftChild, tree);
+    tree.push(rootNode.val);
+    temp = inOrderTraverse(rootNode.rightChild, tree);
+  }
+  return tree;
+}
+var BST = new BinarySearchTree(6);
+BST.insertBST(1);
+BST.insertBST(133);
+BST.insertBST(12);
+console.log(findKthMax(BST.root, 3)); //6

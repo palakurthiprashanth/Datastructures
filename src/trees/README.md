@@ -688,3 +688,58 @@ The time complexity of this solution is O(h) , if it is skewed tree then time co
 </p>
 
 </details>
+
+<details><summary>Find kth Maximum Value in BST
+</summary>
+<p>
+```
+in order traversal gives values in ascending values , get value from last
+```
+```javascript
+function findKthMax(rootNode, k) {
+  var tree = [];
+  tree = inOrderTraverse(rootNode, tree);
+  console.log(tree);
+  if (tree.length - k >= 0 && k > 0) {
+    return tree[tree.length - k];
+  }
+  return null;
+}
+function inOrderTraverse(rootNode, tree) {
+  var temp;
+  if (rootNode !== null) {
+    temp = inOrderTraverse(rootNode.leftChild, tree);
+    tree.push(rootNode.val);
+    temp = inOrderTraverse(rootNode.rightChild, tree);
+  }
+  return tree;
+}
+var BST = new BinarySearchTree(6);
+BST.insertBST(1);
+BST.insertBST(133);
+BST.insertBST(12);
+console.log(findKthMax(BST.root, 3));//6 
+```
+
+```
+Time complexity is O(n)
+```
+
+</p>
+
+</details>
+
+<details><summary>Find kth Maximum Value in BST [ reverse order traversal ]
+</summary>
+<p>
+
+```javascript
+```
+
+```
+
+```
+
+</p>
+
+</details>
