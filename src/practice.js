@@ -56,8 +56,10 @@ class BinarySearchTree {
       if (value === currentNode.val) {
         return currentNode;
       } else if (value < currentNode.val) {
+        console.log(currentNode.leftChild);
         return this.search(currentNode.leftChild, value);
       } else {
+        console.log(currentNode.rightChild);
         return this.search(currentNode.rightChild, value);
       }
     } else {
@@ -134,26 +136,27 @@ class BinarySearchTree {
   }
 }
 
-function findKthMax(rootNode, k) {
-  var tree = [];
-  tree = inOrderTraverse(rootNode, tree);
-  console.log(tree);
-  if (tree.length - k >= 0 && k > 0) {
-    return tree[tree.length - k];
+function findAncestors(currentNode, value) {
+  if (currentNode === null) {
+    return false;
   }
-  return null;
-}
-function inOrderTraverse(rootNode, tree) {
-  var temp;
-  if (rootNode !== null) {
-    temp = inOrderTraverse(rootNode.leftChild, tree);
-    tree.push(rootNode.val);
-    temp = inOrderTraverse(rootNode.rightChild, tree);
+  var res = [];
+  while (currentNode !== null) {
+    if (currentNode.val === value) {
+      console.log(res);
+      return true;
+    }
+    res.push(currentNode.val);
+    if (value < currentNode.val) {
+      currentNode = currentNode.leftChild;
+    } else {
+      currentNode = currentNode.rightChild;
+    }
   }
-  return tree;
 }
 var BST = new BinarySearchTree(6);
 BST.insertBST(1);
 BST.insertBST(133);
 BST.insertBST(12);
-console.log(findKthMax(BST.root, 3)); //6
+findAncestors(BST.root, 12); //  6,133
+//console.log(findKthMax(BST.root, 3)); //6

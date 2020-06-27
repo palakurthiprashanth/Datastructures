@@ -745,3 +745,41 @@ Time complexity is O(n);
 </p>
 
 </details>
+
+<details><summary>Find Ancestors of a Given Node in a BST
+</summary>
+<p>
+
+```javascript
+function findAncestors(currentNode, value) {
+  if (currentNode === null) {
+    return false;
+  }
+  var res = [];
+  while (currentNode !== null) {
+    if (currentNode.val === value) {
+      console.log(res);
+      return true;
+    }
+    res.push(currentNode.val);
+    if (value < currentNode.val) {
+      currentNode = currentNode.leftChild;
+    } else {
+      currentNode = currentNode.rightChild;
+    }
+  }
+}
+var BST = new BinarySearchTree(6);
+BST.insertBST(1);
+BST.insertBST(133);
+BST.insertBST(12);
+findAncestors(BST.root, 12); //  6,133
+```
+
+```
+Time complexity is O(n)
+```
+
+</p>
+
+</details>
