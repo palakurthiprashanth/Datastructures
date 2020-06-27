@@ -38,3 +38,24 @@ class TrieNode {
   }
 }
 ```
+
+Just like any other DS it can also perform operations like Insert , search , deletion.
+
+## Insertion in a Trie
+
+After inserting the word , we will mark isEndOfWord flag to true;
+
+## Case 1: No Common Prefix
+
+Inserting a word whose characters are not common with any other node like
+any , the.
+
+## Case 2: Common Prefix
+
+If new word share a common path with already existing path like if trie has a path of their, then inserting there share common path till "the"
+
+## Case 3: Word Exists
+
+This occurs if your word is a substring of another word that already exists in the trie.
+
+For example, if we want to insert the​ word the in the trie which already contains their, the path for the already exists. Therefore, we simply need to set the value of isEndWord to true at e in order to represent the end of the word
