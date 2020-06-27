@@ -783,3 +783,44 @@ Time complexity is O(n)
 </p>
 
 </details>
+
+<details><summary>Find Height of BST
+</summary>
+<p>
+
+```javascript
+function findHeight(rootNode) {
+  if (rootNode === null)
+    // no node in BST
+    return 0;
+  else if (rootNode.leftChild === null && rootNode.rightChild === null)
+    //Base case, leaf nodes have 0 height
+    return 0;
+  else {
+    //Find Height of left subtree and then right subtree
+    //Return greater height value of left or right subtree (plus 1)
+    var leftHeight = findHeight(rootNode.leftChild);
+    var rightHeight = findHeight(rootNode.rightChild);
+    if (leftHeight > rightHeight) return leftHeight + 1;
+    else return rightHeight + 1;
+  }
+}
+
+var BST = new BinarySearchTree(6);
+BST.insertBST(4);
+BST.insertBST(9);
+BST.insertBST(5);
+BST.insertBST(2);
+BST.insertBST(8);
+BST.insertBST(7);
+BST.insertBST(12);
+console.log(findHeight(BST.root));
+```
+
+```
+Time complexity is O(n)
+```
+
+</p>
+
+</details>
