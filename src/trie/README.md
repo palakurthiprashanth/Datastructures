@@ -96,3 +96,14 @@ insert(key){
 ```
 Time complexity is O(n)
 ```
+
+## Search in a Trie
+
+1. Case 1: Non-Existent Word
+
+If we are searching for a word that doesn’t exist in the trie and is not a subset of any other word, by principle, we will find null before the last character of the word can be found.
+
+Case 2: Word Exists as a Substring
+
+This is the case where our word can be found as a substring of another word, but the isEndWord property for it has been set to false.Therefor word will not be detected.
+if there exists "bed" in trie then "be" will not be detected.
