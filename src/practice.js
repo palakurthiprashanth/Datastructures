@@ -136,20 +136,22 @@ class BinarySearchTree {
   }
 }
 
-function findHeight(rootNode) {
-  if (rootNode === null)
-    // no node in BST
-    return 0;
-  else if (rootNode.leftChild === null && rootNode.rightChild === null)
-    //Base case, leaf nodes have 0 height
-    return 0;
-  else {
-    //Find Height of left subtree and then right subtree
-    //Return greater height value of left or right subtree (plus 1)
-    var leftHeight = findHeight(rootNode.leftChild);
-    var rightHeight = findHeight(rootNode.rightChild);
-    if (leftHeight > rightHeight) return leftHeight + 1;
-    else return rightHeight + 1;
+function findKNodes(rootNode, k) {
+  var result = [];
+  findK(rootNode, k, result);
+  return result;
+}
+
+//Helper recursive function to traverse tree and push all the nodes at "k" distance into "result" array
+function findK(rootNode, k, result) {
+  if (rootNode === null) {
+    return;
+  }
+  if (k === 0) {
+    result.push(rootNode.val);
+  } else {
+    findK(rootNode.leftChild, k - 1, result);
+    findK(rootNode.rightChild, k - 1, result);
   }
 }
 
@@ -159,6 +161,5 @@ BST.insertBST(9);
 BST.insertBST(5);
 BST.insertBST(2);
 BST.insertBST(8);
-BST.insertBST(7);
 BST.insertBST(12);
-console.log(findHeight(BST.root));
+console.log(findKNodes(BST.root, 2)); //2,5,8,12
