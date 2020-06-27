@@ -694,7 +694,7 @@ The time complexity of this solution is O(h) , if it is skewed tree then time co
 <p>
 
 ```
-inOrderTraversal gives values in ascending order
+inOrderTraversal gives values in ascending order, get values from last.
 ```
 
 ```javascript
