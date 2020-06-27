@@ -7,84 +7,139 @@ class Node {
 }
 class BinarySearchTree {
   constructor(rootValue) {
-    this.root = rootValue;
+    this.root = new Node(rootValue);
   }
+
+  insert(currentNode, newValue) {
+    if (currentNode === null) {
+      currentNode = new Node(newValue);
+    } else if (newValue < currentNode.val) {
+      currentNode.leftChild = this.insert(currentNode.leftChild, newValue);
+    } else {
+      currentNode.rightChild = this.insert(currentNode.rightChild, newValue);
+    }
+    return currentNode;
+  }
+
+  insertBST(newValue) {
+    if (this.root == null) {
+      this.root = new Node(newValue);
+      return;
+    }
+    this.insert(this.root, newValue);
+  }
+
   preOrderPrint(currentNode) {
     if (currentNode !== null) {
-      console.log(currentNode);
+      console.log(currentNode.val);
       this.preOrderPrint(currentNode.leftChild);
       this.preOrderPrint(currentNode.rightChild);
     }
   }
-  search(value) {
-    var currentNode = this.root;
-    while (currentNode !== null && currentNode.val !== value) {
+
+  inOrderPrint(currentNode) {
+    if (currentNode !== null) {
+      this.inOrderPrint(currentNode.leftChild);
+      console.log(currentNode.val);
+      this.inOrderPrint(currentNode.rightChild);
+    }
+  }
+  postOrderPrint(currentNode) {
+    if (currentNode !== null) {
+      this.postOrderPrint(currentNode.leftChild);
+      this.postOrderPrint(currentNode.rightChild);
+      console.log(currentNode.val);
+    }
+  }
+  search(currentNode, value) {
+    if (currentNode !== null) {
+      if (value === currentNode.val) {
+        return currentNode;
+      } else if (value < currentNode.val) {
+        return this.search(currentNode.leftChild, value);
+      } else {
+        return this.search(currentNode.rightChild, value);
+      }
+    } else {
+      return null;
+    }
+  }
+
+  searchBST(value) {
+    return this.search(this.root, value);
+  }
+  delete(currentNode, value) {
+    if (currentNode == null) {
+      return false;
+    }
+
+    var parentNode;
+    while (currentNode && currentNode.val !== value) {
+      parentNode = currentNode;
       if (value < currentNode.val) {
         currentNode = currentNode.leftChild;
       } else {
         currentNode = currentNode.rightChild;
       }
     }
-    return currentNode;
-  }
-  insert(newValue) {
-    if (this.root === null) {
-      this.root = newValue;
-      return;
-    }
-    let parent;
-    let currentNode = this.root;
-    while (currentNode) {
-      parent = currentNode;
-      if (newValue < currentNode) {
-        currentNode = currentNode.leftChild;
-      } else {
-        currentNode = currentNode.rightChild;
-      }
-    }
-    // it has reached last level
-    if (newValue < parent.val) {
-      parent.leftChild = new Node(newValue);
-    } else {
-      parent.rightChild = new Node(newValue);
-    }
-  }
-  delete(currentNode, value) {
-    if (currentNode === null) {
-      return false;
-    }
-    var parent;
-    while (currentNode !== null && currentNode !== value) {
-      parent = currentNode;
-      if (value < currentNode) {
-        currentNode = currentNode.leftChild;
-      } else {
-        currentNode = currentNode.rightChild;
-      }
-    }
-    //case 2 : currentNode IS EQUAL to null. Value not found!
+
     if (currentNode === null) {
       return false;
     } else if (
-      currentNode.leftChild === null &&
-      currentNode.rightChild === null
+      currentNode.leftChild == null &&
+      currentNode.rightChild == null
     ) {
-      if (currentNode.val < parent.val) {
-        parent.leftChild = null;
+      if (currentNode.val === this.root.val) {
+        this.root = null;
         return true;
-      }
-      if (currentNode.val > parent.val) {
-        parent.rightChild = null;
-        return true;
-      }
-    } else if (currentNode.rightChild === null) {
-      if (currentNode.val < parent.val) {
-        parent.leftChild = currentNode.leftChild;
+      } else if (currentNode.val < parentNode.val) {
+        parentNode.leftChild = null;
         return true;
       } else {
-        parent.rightChild = currentNode.rightChild;
+        parentNode.rightChild = null;
         return true;
       }
+    } else if (currentNode.rightChild == null) {
+      if (currentNode.val === this.root.val) {
+        this.root = currentNode.leftChild;
+        return true;
+      } else if (currentNode.leftChild.val < parentNode.val) {
+        parentNode.leftChild = currentNode.leftChild;
+        return true;
+      } else {
+        parentNode.rightChild = currentNode.leftChild;
+        return true;
+      }
+    } else if (currentNode.leftChild == null) {
+      if (currentNode.val === this.root.val) {
+        this.root = currentNode.rightChild;
+        return true;
+      } else if (currentNode.rightChild.val < parentNode.val) {
+        parentNode.leftChild = currentNode.rightChild;
+        return true;
+      } else {
+        parentNode.rightChild = currentNode.rightChild;
+        return true;
+      }
+    } else {
+      var minRight = currentNode.rightChild;
+      while (minRight.leftChild !== null) {
+        minRight = minRight.leftChild;
+      }
+      var temp = minRight.val;
+      this.delete(this.root, minRight.val);
+      currentNode.val = temp;
+      return true;
     }
   }
+}
+
+findMin(currentNode) {
+  if (currentNode === null) {
+    return false;
+  }
+  while(currentNode!==null) {
+    currentNode = currentNode.leftChild;
+  }
+  return currentNode.val;
 }

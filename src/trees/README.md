@@ -662,3 +662,29 @@ So for searching AVL is better , for insertion , deletion is faster in RED-Black
    b. if parent's sibbling is RED then change the color of parent and parents
    sibling and also check if parents parent is not root node then recolor
    and recheck it.
+
+## challenges
+
+<details><summary>Find min value in BST
+</summary>
+<p>
+
+```javascript
+findMin(currentNode) {
+  if (currentNode === null) {
+    return false;
+  }
+  while(currentNode!==null) {
+    currentNode = currentNode.leftChild;
+  }
+  return currentNode.val;
+}
+```
+
+```
+The time complexity of this solution is O(h) , if it is skewed tree then time complexity is O(n)
+```
+
+</p>
+
+</details>
