@@ -1,10 +1,7 @@
-function hashModular(key, length) {
-  return key % length;
+class HashEntry {
+  constructor(key, data) {
+    this.key = key;
+    this.data = data;
+    this.next = null;
+  }
 }
-var a = [];
-for (var i = 0; i < 10; i++) {
-  a[i] = null;
-}
-let key = 35;
-let index = hashModular(key, 10);
-alert(index); // 5

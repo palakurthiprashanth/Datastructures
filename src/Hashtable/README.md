@@ -52,3 +52,17 @@ let key = 35;
 let index = hashModular(key, 10);
 alert(index); // 5
 ```
+
+## Hash Table Using Bucket Chaining
+
+Hash entry class
+
+```javascript
+class HashEntry {
+  constructor(key, data) {
+    this.key = key;
+    this.data = data;
+    this.next = null;
+  }
+}
+```
