@@ -101,3 +101,41 @@ class HashTable {
   }
 }
 ```
+
+## Challenges
+
+<details><summary>An Array as a Subset of Another Array</summary>
+<p>
+
+```javascript
+function isSubset(list1, list2) {
+  let ht = new HashTable();
+  if (list2.length > list1.length) {
+    return false;
+  }
+  for (var i = 0; i < list1.length; i++) {
+    ht.insert(list1[i], i);
+  }
+  for (var i = 0; i < list2.length; i++) {
+    if (ht.search(list2[i]) === null) {
+      return false;
+    }
+  }
+  return true;
+}
+var list1 = [1, 2, 3, 4, 5, 6];
+var list2 = [2, 4, 6];
+console.log(isSubset(list1, list2));
+```
+
+```
+Time complexity
+Since this algorithm traverses the whole of the list1 once and list2 is only traversed if
+ its size is less than list1.
+ Thus we will have 2 \times× n traversal, if list1's length was n, therefore, its time
+ complexity is O(n)
+```
+
+</p>
+
+</details>

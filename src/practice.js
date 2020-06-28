@@ -1,122 +1,168 @@
 class HashEntry {
   constructor(key, data) {
     this.key = key;
-    this.data = data;
+    // data to be stored
+    this.value = data;
+    // reference to new entry
     this.next = null;
   }
 }
-
 class HashTable {
+  //Constructor
   constructor() {
-    //size of table
+    //Size of the HashTable
     this.slots = 10;
-    //size and we can use to resize hashtable
+    //Current entries in the table
+    //Used while resizing the table when half of the table gets filled
     this.size = 0;
-    this.buckets = []; // key value pairs
-    //intially all are none;
+    //Array of HashEntry objects (by deafult all null)
+    this.bucket = [];
     for (var i = 0; i < this.slots; i++) {
-      this.buckets[i] = null;
+      this.bucket[i] = null;
     }
+    this.threshold = 0.6;
   }
-  getSize() {
+  //Helper Functions
+  get_size() {
     return this.size;
   }
-  isEmppty() {
-    return this.getSize() === 0;
-  }
+  //Hash Function
   getIndex(key) {
-    return key % this.slots;
+    let index = key % this.slots;
+    return index;
   }
-}
-let threshold = 0.6;
-HashTable.prototype.resize = function() {
-  let new_slots = this.slots * 2;
-  let new_bucket = [];
-  for (var i = 0; i < new_slots; i++) {
-    new_bucket[i] = null;
+  isEmpty() {
+    return this.get_size() === 0;
   }
-  for (var i = 0; i < this.buckets.length; i++) {
-    let head = this.buckets[i];
-    let new_index = this.getIndex(head.key);
+
+  insert(key, value) {
+    //Find the node with the given key
+    let b_Index = this.getIndex(key);
+    if (this.bucket[b_Index] == null) {
+      this.bucket[b_Index] = new HashEntry(key, value);
+      console.log(String(key) + ", " + String(value) + " - inserted.");
+    } else {
+      let head = this.bucket[b_Index];
+      while (head != null) {
+        if (head.key === key) {
+          head.value = value;
+          break;
+        } else if (head.next == null) {
+          head.next = new HashEntry(key, value);
+          console.log(String(key) + ", " + String(value) + " - inserted.");
+          break;
+        }
+        head = head.next;
+      }
+    }
+
+    this.size += 1;
+    let load_factor = Number(this.size) / Number(this.slots);
+    //Checks if 60% of the entries in table are filled, threshold = 0.6
+    if (load_factor >= this.threshold) {
+      this.resize();
+    }
+  }
+
+  //Return a value for a given key
+  search(key) {
+    //Find the node with the given key
+    let b_Index = this.getIndex(key);
+    let head = this.bucket[b_Index];
+    //Search key in the slots
+    if (head != null) {
+      while (head != null) {
+        if (head.key === key) {
+          return head.value;
+        }
+        head = head.next;
+      }
+    }
+    //If key not found
+    console.log("Key not found");
+    return null;
+  }
+
+  //Remove a value based on a key
+  deleteVal(key) {
+    //Find index
+    let b_Index = this.getIndex(key);
+    let head = this.bucket[b_Index];
+    //If key exists at first slot
+    if (head.key === key) {
+      this.bucket[b_Index] = head.next;
+      console.log("Key deleted");
+      this.size -= 1;
+      return this;
+    }
+    //Find the key in slots
+    let prev = null;
     while (head != null) {
-      if (new_bucket[new_index] === null) {
-        new_bucket[new_index] = new HashEntry(head.key, head.data);
-      } else {
-        let node = new_bucket[new_index];
-        while (node !== null) {
-          if (node.key === head.key) {
-            node.data = head.data;
-          } else if (node.next === null) {
-            node.next = new HashEntry(head.key, head.data);
-            node = node.next;
-          } else {
-            node = node.next;
+      //If key exists
+      if (head.key === key) {
+        prev.next = head.next;
+        console.log("Key deleted");
+        this.size -= 1;
+        return this;
+      }
+      //Else keep moving in chain
+      prev = head;
+      head = head.next;
+    }
+    //If key does not exist
+    console.log("Key not found");
+    return null;
+  }
+
+  resize() {
+    let new_slots = this.slots * 2;
+    let new_bucket = [];
+    for (var n = 0; n < new_slots; n++) {
+      new_bucket[n] = null;
+    }
+    // rehash all items into new slots
+    for (var i = 0; i < this.bucket.length; i++) {
+      let head = this.bucket[i];
+      while (head != null) {
+        let new_index = this.getIndex(head.key);
+        if (new_bucket[new_index] == null) {
+          new_bucket[new_index] = new HashEntry(head.key, head.value);
+        } else {
+          let node = new_bucket[new_index];
+          while (node != null) {
+            if (node.key === head.key) {
+              node.value = head.value;
+              node = null;
+            } else if (node.next == null) {
+              node.next = new HashEntry(head.key, head.value);
+              node = null;
+            } else {
+              node = node.next;
+            }
           }
         }
+        head = head.next;
       }
-      head = head.next;
+    }
+    this.bucket = new_bucket;
+    this.slots = new_slots;
+  }
+}
+function isSubset(list1, list2) {
+  let ht = new HashTable();
+  if (list2.length > list1.length) {
+    return false;
+  }
+  for (var i = 0; i < list1.length; i++) {
+    ht.insert(list1[i], i);
+  }
+  for (var i = 0; i < list2.length; i++) {
+    if (ht.search(list2[i]) === null) {
+      return false;
     }
   }
-  this.slots = new_slots;
-  this.buckets = new_bucket;
-};
-
-HashTable.prototype.insert = function(key, value) {
-  let threshold = 0.6;
-  let b_index = this.getIndex(key);
-  if (this.buckets[b_index] === null) {
-    this.buckets[b_index] = new HashEntry(key, value);
-  } else {
-    let head = this.buckets[b_index];
-    while (head !== null) {
-      if (head.key === key) {
-        head.data = value;
-        break;
-      } else if (head.next === null) {
-        head.next = new HashEntry(key, value);
-        break;
-      }
-      head = head.next;
-    }
-  }
-  this.size = this.size + 1;
-  let load_factor = Number(this.size) / Number(this.slots);
-  //Checks if 60% of the entries in table are filled, threshold = 0.6
-  if (load_factor >= threshold) {
-    this.resize();
-  }
-};
-
-HashTable.prototype.search = function(key) {
-  let b_index = this.getIndex(b_index);
-  let head = this.buckets[b_index];
-  if (head !== null) {
-    while (head !== null) {
-      if (head.key === key) {
-        return head.value;
-      }
-      head = head.next;
-    }
-  }
-  console.log("Not found");
-};
-
-HashTable.prototype.deleteVal = function(key) {
-  let b_index = this.getIndex(key);
-  let head = this.buckets[b_index];
-  if (head.key === key) {
-    this.buckets[b_index] = head.next;
-    console.log("deleted");
-    this.size = this.size - 1;
-  }
-  let prev = null;
-  while (head !== null) {
-    if (head.key === key) {
-      prev.next = head.next;
-    }
-    prev = head;
-    head = head.next;
-  }
-  console.log("not found");
-  return;
-};
+  return true;
+}
+var list1 = [1, 2, 3, 4, 5, 6];
+var list2 = [2, 4, 6];
+console.log(isSubset(list1, list2));
