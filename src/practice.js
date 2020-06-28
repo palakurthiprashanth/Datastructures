@@ -24,4 +24,7 @@ class HashTable {
   isEmppty() {
     return this.getSize() === 0;
   }
+  getIndex(key) {
+    return key % this.slots;
+  }
 }
