@@ -262,4 +262,58 @@ Time complexity  is O(npow2);
 </p>
 
 </details>
-````
+
+<details><summary>A Subarray with a Sum of 0</summary>
+<p>
+
+```
+subset of values consecutively to become sum 0
+[6, 4, -7, 3, 12, 9] = > 4,-7,3 =0 [consecutively]
+[-7, 4, 6, 3, 12, 9] => false [non-consecutively]
+```
+
+```
+We basically have to check for 3 conditions:
+
+If 0 exists in the array
+
+If the sum becomes zero in the iteration
+
+If the sum reverts back to a value which was already a key in the
+ hash table
+
+Any of these three conditions confirms the existence of a subarray that sums up to be zero.
+```
+
+```javascript
+function findSubZero(my_list) {
+  //Use HashMap to store sum as key and index i as value till sum has been calculated
+  //Traverse the array and return true if either
+  //my_list[i] == 0 or sum == 0 or HashMap already contains the sum
+  //If you completely traverse the list and havent found any of the above three
+  //conditions then simply return false
+  let hMap = new HashTable();
+  let sum = 0;
+  //Traverse through the given array
+  for (var i = 0; i < my_list.length; i++) {
+    sum += my_list[i];
+    if (my_list[i] == 0 || sum == 0 || hMap.search(sum) != null) {
+      return true;
+    }
+    hMap.insert(sum, i);
+  }
+  return false;
+}
+
+var list = [4, -7, 3];
+
+console.log(findSubZero(list));
+```
+
+```
+Time complexity  is O(n);
+```
+
+</p>
+
+</details>

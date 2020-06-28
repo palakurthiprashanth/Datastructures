@@ -149,24 +149,14 @@ class HashTable {
   }
 }
 
-function findPair(list) {
-  var ht = new HashTable();
-  let result = [];
-  for (var i = 0; i < list.length; i++) {
-    for (var j = i + 1; j < list.length; j++) {
-      let sum = list[i] + list[j];
-      if (ht.search(sum) === null) {
-        ht.insert(sum, [list[i], list[j]]);
-      } else {
-        let prevSum = ht.search(sum);
-        let sec_pair = [list[i], list[j]];
-        result.push(prevSum);
-        result.push(sec_pair);
-      }
+function findSubZero(my_list) {
+  let ht = new HashTable();
+  let sum = 0;
+  for (var i = 0; i < my_list.length; i++) {
+    sum = sum + my_list[i];
+    if (sum === 0 || my_list[i] === 0 || ht.search(sum) !== null) {
+      return true;
     }
+    ht.insert(sum, i);
   }
-  return result;
 }
-var list = [7, 4, 9, 12, 0, 1];
-var res = findPair(list);
-console.log(res);
