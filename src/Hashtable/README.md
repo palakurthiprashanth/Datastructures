@@ -178,3 +178,43 @@ For a lookup list with mm elements, each insertion in the hash table takes a con
 </p>
 
 </details>
+
+<details><summary>Trace the Complete Path of a Journey</summary>
+<p>
+```
+Reverse a map , compare keys in 2 maps if any key doesnt exist then it is source
+````
+
+```javascript
+function isDisjoint(list1, list2) {
+  //Write code here
+  let ht = new HashTable();
+  //Inserting list1's elements in ht
+  for (var i = 0; i < list1.length; i++) {
+    ht.insert(list1[i], i);
+  }
+  //Checking to see if all of list2's elements are in the hashtable
+  for (var j = 0; j < list2.length; j++) {
+    if (ht.search(list2[j]) != null) {
+      return false; //return false if there is an element in list2 that is in list1
+    }
+  }
+  return true;
+}
+```
+
+```
+output
+[ [ 'Boston', 'Texas' ],
+  [ 'Texas', 'Missouri' ],
+  [ 'Missouri', 'NewYork' ],
+  [ 'NewYork', 'Chicago' ] ]
+```
+
+```
+Time complexity  is O(n);
+```
+
+</p>
+
+</details>

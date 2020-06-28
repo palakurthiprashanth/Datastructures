@@ -148,21 +148,38 @@ class HashTable {
     this.slots = new_slots;
   }
 }
-function isSubset(list1, list2) {
-  let ht = new HashTable();
-  if (list2.length > list1.length) {
-    return false;
+
+function tracePath(map) {
+  var reverseMap = {};
+  for (var key in map) {
+    reverseMap[map[key]] = key;
   }
-  for (var i = 0; i < list1.length; i++) {
-    ht.insert(list1[i], i);
-  }
-  for (var i = 0; i < list2.length; i++) {
-    if (ht.search(list2[i]) === null) {
-      return false;
+  console.log(map);
+  console.log(reverseMap);
+  var from_loc;
+  for (var key1 in map) {
+    if (reverseMap[key1] === null || reverseMap[key1] === undefined) {
+      from_loc = key1;
+      break;
     }
   }
-  return true;
+  console.log("from_loc");
+  console.log(from_loc);
+  var to_loc = map[from_loc];
+  var result = [];
+  debugger;
+  while (to_loc !== undefined) {
+    result.push([from_loc, to_loc]);
+    from_loc = to_loc;
+    to_loc = map[to_loc];
+  }
+  //alert(result);
+  return result;
 }
-var list1 = [1, 2, 3, 4, 5, 6];
-var list2 = [2, 4, 6];
-console.log(isSubset(list1, list2));
+
+var map = {};
+map["newyork"] = "chicago";
+map["boston"] = "texas";
+map["missori"] = "newyork";
+map["texas"] = "missori";
+tracePath(map);
