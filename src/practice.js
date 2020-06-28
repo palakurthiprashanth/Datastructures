@@ -1,168 +1,69 @@
-class TrieNode {
-  constructor(char) {
-    this.children = [];
-    for (var i = 0; i < 26; i++) {
-      //Total # of English Alphabets
-      this.children[i] = null;
-    }
-    this.isEndWord = false; //will be true if the node represents the end of word
-    this.char = char; //To store the value of a particular key
-  }
-  //Function to mark the currentNode as Leaf
-  markAsLeaf() {
-    this.isEndWord = true;
-  }
-
-  //Function to unMark the currentNode as Leaf
-  unMarkAsLeaf() {
-    this.isEndWord = false;
-  }
-}
-
-class Trie {
+class maxHeap {
   constructor() {
-    this.root = new TrieNode(""); //Root node
+    this.heap = [];
+    this.elements = 0;
   }
-  //Function to get the index of character 't'
-  getIndex(t) {
-    return t.charCodeAt(0) - "a".charCodeAt(0);
+  getMax() {
+    if (this.elements) {
+      return this.heap[0];
+    }
+    return null;
   }
-
-  //Function to insert a key in the Trie
-  insert(key) {
-    //None keys are not allowed
-    if (key == null) {
+  __percolateUp(index) {
+    if (index < 0) {
       return;
     }
-
-    key = key.toLowerCase(); //Keys are stored in lowercase
-    let currentNode = this.root;
-    let index = 0; //To store the character index
-
-    //Iterate the trie with the given character index,
-    //If the index points to null
-    //simply create a TrieNode and go down a level
-    for (var level = 0; level < key.length; level++) {
-      let index = this.getIndex(key[level]);
-
-      if (currentNode.children[index] == null) {
-        currentNode.children[index] = new TrieNode(key[level]);
-        console.log(String(key[level]) + " inserted");
-      }
-      currentNode = currentNode.children[index];
+    var parent = Math.floor((index - 1) / 2);
+    if (this.heap[parent] < this.heap[index]) {
+      var temp = this.heap[parent];
+      this.heap[parent] = this.heap[index];
+      this.heap[index] = temp;
+      this._percolateUp(this.heap[index]);
     }
-
-    //Mark the end character as leaf node
-    currentNode.markAsLeaf();
-    console.log("'" + key + "' inserted");
   }
-
-  //Function to search a given key in Trie
-  search(key) {
-    if (key == null) {
-      return false; //null key
+  __maxHeapify(index) {
+    let left = index * 2 + 1;
+    let right = index * 2 + 2;
+    let largest = index;
+    if (this.elements > left && this.heap[largest] < this.heap[left]) {
+      largest = left;
     }
-
-    key = key.toLowerCase();
-    let currentNode = this.root;
-    let index = 0;
-
-    //Iterate the Trie with given character index,
-    //If it is null at any point then we stop and return false
-    //We will return true only if we reach leafNode and have traversed the
-    //Trie based on the length of the key
-
-    for (var level = 0; level < key.length; level++) {
-      index = this.getIndex(key[level]);
-      if (currentNode.children[index] == null) {
-        return false;
-      }
-      currentNode = currentNode.children[index];
+    if (this.elements > right && this.heap[largest] < this.heap[right]) {
+      largest = right;
     }
-    if (currentNode != null && currentNode.isEndWord) {
-      return true;
+    if (largest !== index) {
+      let temp = this.heap[largest];
+      this.heap[largest] = this.heap[index];
+      this.heap[index] = temp;
+      this.__maxHeapify(largest);
     }
-    return false;
   }
-
-  //Helper Function to return true if currentNode does not have any children
-  hasNoChildren(currentNode) {
-    for (var i = 0; i < currentNode.children.length; i++) {
-      if (currentNode.children[i] != null) return false;
-    }
-    return true;
+  insert(val) {
+    this.elements = this.elements + 1;
+    this.heap.push(val);
+    this.__percolateUp(this.elements - 1);
   }
-
-  //Recursive function to delete given key
-  deleteHelper(key, currentNode, length, level) {
-    let deletedSelf = false;
-
-    if (currentNode == null) {
-      console.log("Key does not exist");
-      return deletedSelf;
+  removeMax() {
+    if (this.elements > 1) {
+      var max = this.heap[0];
+      this.heap[0] = this.heap[this.elements - 1];
+      this.elements = this.elements - 1;
+      this.__maxHeapify(0);
+      return max;
     }
-
-    //Base Case: If we have reached at the node which points to the alphabet at the end of the key.
-    if (level == length) {
-      //If there are no nodes ahead of this node in this path
-      //Then we can delete this node
-      if (this.hasNoChildren(currentNode)) {
-        currentNode = null;
-        deletedSelf = true;
-      }
-
-      //If there are nodes ahead of currentNode in this path
-      //Then we cannot delete currentNode. We simply unmark this as leaf
-      else {
-        currentNode.unMarkAsLeaf();
-        deletedSelf = false;
-      }
-    } else {
-      let childNode = currentNode.children[this.getIndex(key[level])];
-      let childDeleted = this.deleteHelper(key, childNode, length, level + 1);
-      if (childDeleted) {
-        //Making children pointer also None: since child is deleted
-        currentNode.children[this.getIndex(key[level])] = null;
-        //If currentNode is leaf node that means currentNode is part of another key
-        //and hence we can not delete this node and it's parent path nodes
-        if (currentNode.isEndWord) deletedSelf = false;
-        //If childNode is deleted but if currentNode has more children then currentNode must be part of another key
-        //So, we cannot delete currenNode
-        else if (this.hasNoChildren(currentNode) == false) deletedSelf = false;
-        //Else we can delete currentNode
-        else {
-          currentNode = null;
-          deletedSelf = true;
-        }
-      } else deletedSelf = false;
-    }
-    return deletedSelf;
   }
-
-  //Function to delete given key from Trie
-  delete(key) {
-    if (this.root == null || key == null) {
-      console.log("None key or empty trie error");
-      return;
+  buildHeap(arr) {
+    this.heap = arr;
+    this.elements = this.heap.length;
+    for (var i = this.heap.length - 1; i >= 0; i--) {
+      this.__maxHeapify(i);
     }
-
-    this.deleteHelper(key, this.root, key.length, 0);
   }
 }
-function totalWords(rootN) {
-  let result = 0;
-  if (rootN.isEndWord) {
-    result = result + 1;
-  }
-  for (var i = 0; i < 26; i++) {
-    if (rootN.children[i] !== null) {
-      result = result + totalWords(rootN.children[i]);
-    }
-  }
-  return result;
-}
 
-let t = new Trie();
-t.insert("ab");
-t.insert("ba");
-console.log(totalWords(t.root)); //2
+var heap = new maxHeap();
+var arrayList = [6, 9, 3, 4, 13, 22, 1, 30, 17];
+heap.buildHeap(arrayList);
+console.log(heap.heap);
+console.log(heap.removeMax());
+console.log(heap.heap);
