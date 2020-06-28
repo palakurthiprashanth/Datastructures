@@ -149,17 +149,20 @@ class HashTable {
   }
 }
 
-function findSum(arr, value) {
+function findFirstUnique(arr) {
   let ht = new HashTable();
-  let result = [];
   for (var i = 0; i < arr.length; i++) {
-    if (ht.search(value - arr[i]) !== null) {
-      result.push(arr[i]);
-      result.push(value - arr[i]);
-      return result;
+    if (ht.search(arr[i]) === null) {
+      ht.insert(arr[i], 1);
+    } else {
+      ht.insert(arr[i], 0);
     }
-    ht.insert(arr[i], i);
   }
-  return false;
+  for (var i = 0; i < arr.length; i++) {
+    if (ht.search(arr[i]) === 1) {
+      return arr[i];
+    }
+  }
+  return null;
 }
-console.log(findSum([1, 2, 4], 5));
+console.log(findFirstUnique([9, 2, 3, 2, 6, 6, 9, 12, 3]));

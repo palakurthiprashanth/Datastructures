@@ -362,3 +362,41 @@ Time complexity  is O(n);
 </p>
 
 </details>
+
+<details><summary>Find First Unique Integer in an Array</summary>
+<p>
+
+```
+first we check the key in hash table , if it exists overide with 0
+for the first time search will be null insert 1.
+so next time if it repeats it overides with 0.
+so data with key 1 is unique
+```
+
+```javascript
+function findFirstUnique(arr) {
+  let ht = new HashTable();
+  for (var i = 0; i < arr.length; i++) {
+    if (ht.search(arr[i]) === null) {
+      ht.insert(arr[i], 1);
+    } else {
+      ht.insert(arr[i], 0);
+    }
+  }
+  for (var i = 0; i < arr.length; i++) {
+    if (ht.search(arr[i]) === 1) {
+      return arr[i];
+    }
+  }
+  return null;
+}
+console.log(findFirstUnique([9, 2, 3, 2, 6, 6, 9, 12, 3]));
+```
+
+```
+Time complexity  is O(n);
+```
+
+</p>
+
+</details>
