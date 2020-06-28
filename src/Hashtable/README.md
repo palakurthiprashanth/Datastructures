@@ -106,6 +106,9 @@ class HashTable {
 
 <details><summary>An Array as a Subset of Another Array</summary>
 <p>
+```
+Stores list1 in hast table and search list 2 in search1.
+````
 
 ```javascript
 function isSubset(list1, list2) {
