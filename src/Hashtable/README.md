@@ -142,3 +142,39 @@ Since this algorithm traverses the whole of the list1 once and list2 is only tra
 </p>
 
 </details>
+
+<details><summary>Check if Arrays are Disjointed</summary>
+<p>
+```
+Disjoint means  there should be no common elements in 2 arrays
+It is similar to prev one, here search list2 in list1 if element fount not a disjoint
+````
+
+```javascript
+function isDisjoint(list1, list2) {
+  //Write code here
+  let ht = new HashTable();
+  //Inserting list1's elements in ht
+  for (var i = 0; i < list1.length; i++) {
+    ht.insert(list1[i], i);
+  }
+  //Checking to see if all of list2's elements are in the hashtable
+  for (var j = 0; j < list2.length; j++) {
+    if (ht.search(list2[j]) != null) {
+      return false; //return false if there is an element in list2 that is in list1
+    }
+  }
+  return true;
+}
+```
+
+```
+Time complexity
+For a lookup list with mm elements, each insertion in the hash table takes a constant
+ amount of time. The search operation in the hash table also takes a constant amount of
+ time for a subset list with nn elements. Hence, the time complexity is O(m+n).
+```
+
+</p>
+
+</details>
