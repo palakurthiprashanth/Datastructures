@@ -149,37 +149,24 @@ class HashTable {
   }
 }
 
-function tracePath(map) {
-  var reverseMap = {};
-  for (var key in map) {
-    reverseMap[map[key]] = key;
-  }
-  console.log(map);
-  console.log(reverseMap);
-  var from_loc;
-  for (var key1 in map) {
-    if (reverseMap[key1] === null || reverseMap[key1] === undefined) {
-      from_loc = key1;
-      break;
+function findPair(list) {
+  var ht = new HashTable();
+  let result = [];
+  for (var i = 0; i < list.length; i++) {
+    for (var j = i + 1; j < list.length; j++) {
+      let sum = list[i] + list[j];
+      if (ht.search(sum) === null) {
+        ht.insert(sum, [list[i], list[j]]);
+      } else {
+        let prevSum = ht.search(sum);
+        let sec_pair = [list[i], list[j]];
+        result.push(prevSum);
+        result.push(sec_pair);
+      }
     }
   }
-  console.log("from_loc");
-  console.log(from_loc);
-  var to_loc = map[from_loc];
-  var result = [];
-  debugger;
-  while (to_loc !== undefined) {
-    result.push([from_loc, to_loc]);
-    from_loc = to_loc;
-    to_loc = map[to_loc];
-  }
-  //alert(result);
   return result;
 }
-
-var map = {};
-map["newyork"] = "chicago";
-map["boston"] = "texas";
-map["missori"] = "newyork";
-map["texas"] = "missori";
-tracePath(map);
+var list = [7, 4, 9, 12, 0, 1];
+var res = findPair(list);
+console.log(res);
