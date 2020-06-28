@@ -305,9 +305,15 @@ function findSubZero(my_list) {
   return false;
 }
 
-var list = [4, -7, 3];
+var list = [6, 4, -7, 3, 12, 9];
 
 console.log(findSubZero(list));
+```
+
+```
+In above hastable has keys
+6,10,3,6
+6 already exists so ht.sarch is true.
 ```
 
 ```
