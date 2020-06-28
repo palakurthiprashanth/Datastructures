@@ -149,14 +149,17 @@ class HashTable {
   }
 }
 
-function findSubZero(my_list) {
+function findSum(arr, value) {
   let ht = new HashTable();
-  let sum = 0;
-  for (var i = 0; i < my_list.length; i++) {
-    sum = sum + my_list[i];
-    if (sum === 0 || my_list[i] === 0 || ht.search(sum) !== null) {
-      return true;
+  let result = [];
+  for (var i = 0; i < arr.length; i++) {
+    if (ht.search(value - arr[i]) !== null) {
+      result.push(arr[i]);
+      result.push(value - arr[i]);
+      return result;
     }
-    ht.insert(sum, i);
+    ht.insert(arr[i], i);
   }
+  return false;
 }
+console.log(findSum([1, 2, 4], 5));

@@ -323,3 +323,42 @@ Time complexity  is O(n);
 </p>
 
 </details>
+
+<details><summary>Find Two Numbers that Add up to "value"</summary>
+<p>
+
+```
+In this solution, we scan the whole array once and store visited
+elements in a hash set. During the scan, for every element arr[i]
+ in arr, we check if value - arr[i] is present in the hash set
+ i.e. value - arr[i] is already visited. If value - arr[i] is
+  found in the hash set, it means there is a pair (arr[i], value
+   - arr[i]) in arr whose sum is equal to the given value.
+   If we have exhausted all elements in the array and didn’t find
+    any such pair, the function will return false.
+```
+
+```javascript
+function findSum(arr, value) {
+  let ht = new HashTable();
+  let result = [];
+  for (var i = 0; i < arr.length; i++) {
+    if (ht.search(value - arr[i]) !== null) {
+      result.push(arr[i]);
+      result.push(value - arr[i]);
+      return result;
+    }
+    ht.insert(arr[i], i);
+  }
+  return false;
+}
+console.log(findSum([1, 2, 4], 5));
+```
+
+```
+Time complexity  is O(n);
+```
+
+</p>
+
+</details>
