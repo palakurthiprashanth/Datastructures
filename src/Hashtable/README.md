@@ -23,3 +23,32 @@ Performance of hash table depends on
 1. Hash function
 2. size of hash table
 3. collision method.
+
+## Hash function
+
+It is implemented using Array.
+If you know the index then we can retrieve value in O(1) time.
+But how we know the index , we can now the index based on Hash function.
+
+## Common Hashing functions
+
+1. Arithmetic Modular
+
+In this we calculate index where value is stored using
+
+index = key MOD tableSize.
+
+so index is always between 0 to tablesize-1.
+
+```javascript
+function hashModular(key, length) {
+  return key % length;
+}
+var a = [];
+for (var i = 0; i < 10; i++) {
+  a[i] = null;
+}
+let key = 35;
+let index = hashModular(key, 10);
+alert(index); // 5
+```
