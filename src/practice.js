@@ -312,32 +312,18 @@ class LinkedList {
   }
 }
 
-function removeDuplicates(list) {
-  let currentNode = list.getHead();
-  let prevNode = list.getHead();
-  let visitedNodes = new HashTable();
-  if (list.isEmpty() || currentNode.nextElement === null) {
-    return false;
+function unionList(list1, list2) {
+  let ht = new HashTable();
+  let list1Iter = list1.getHead();
+  while (list1Iter !== null) {
+    ht.insert(list1Iter.data, 1);
+    list1Iter = list1Iter.nextElement;
   }
-  while (currentNode !== null) {
-    if (visitedNodes.search(currentNode.data) !== null) {
-      prevNode.nextElement = currentNode.nextElement;
-      currentNode = currentNode.nextElement;
-    } else {
-      visitedNodes.insert(currentNode.data, 1);
-      prevNode = currentNode;
-      currentNode = currentNode.nextElement;
+  let list2Iter = list2.getHead();
+  while (list2Iter !== null) {
+    if (ht.search(list2Iter.data) === null) {
+      list1.insertAtHead(list2Iter.data);
     }
+    list2Iter = list2Iter.nextElement;
   }
 }
-
-let list = new LinkedList();
-list.insertAtHead(7);
-list.insertAtHead(7);
-list.insertAtHead(7);
-list.insertAtHead(22);
-list.insertAtHead(7);
-
-console.log(list);
-removeDuplicates(list);
-console.log(list);
