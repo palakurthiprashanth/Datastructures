@@ -400,3 +400,40 @@ Time complexity  is O(n);
 </p>
 
 </details>
+
+<details><summary>Remove Duplicates from a Linked List</summary>
+<p>
+
+```
+we store all elements in HT, if any of value is already
+found in HT then we will break link with prevNode
+```
+
+```javascript
+function removeDuplicates(list) {
+  let currentNode = list.getHead();
+  let prevNode = list.getHead();
+  let visitedNodes = new HashTable();
+  if (list.isEmpty() || currentNode.nextElement === null) {
+    return false;
+  }
+  while (currentNode !== null) {
+    if (visitedNodes.search(currentNode.data) !== null) {
+      prevNode.nextElement = currentNode.nextElement;
+      currentNode = currentNode.nextElement;
+    } else {
+      visitedNodes.insert(currentNode.data, 1);
+      prevNode = currentNode;
+      currentNode = currentNode.nextElement;
+    }
+  }
+}
+```
+
+```
+Time complexity  is O(n);
+```
+
+</p>
+
+</details>
