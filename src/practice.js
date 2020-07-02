@@ -1,153 +1,3 @@
-class HashEntry {
-  constructor(key, data) {
-    this.key = key;
-    // data to be stored
-    this.value = data;
-    // reference to new entry
-    this.next = null;
-  }
-}
-class HashTable {
-  //Constructor
-  constructor() {
-    //Size of the HashTable
-    this.slots = 10;
-    //Current entries in the table
-    //Used while resizing the table when half of the table gets filled
-    this.size = 0;
-    //Array of HashEntry objects (by deafult all null)
-    this.bucket = [];
-    for (var i = 0; i < this.slots; i++) {
-      this.bucket[i] = null;
-    }
-    this.threshold = 0.6;
-  }
-  //Helper Functions
-  get_size() {
-    return this.size;
-  }
-  //Hash Function
-  getIndex(key) {
-    let index = key % this.slots;
-    return index;
-  }
-  isEmpty() {
-    return this.get_size() === 0;
-  }
-
-  insert(key, value) {
-    //Find the node with the given key
-    let b_Index = this.getIndex(key);
-    if (this.bucket[b_Index] == null) {
-      this.bucket[b_Index] = new HashEntry(key, value);
-      console.log(String(key) + ", " + String(value) + " - inserted.");
-    } else {
-      let head = this.bucket[b_Index];
-      while (head != null) {
-        if (head.key === key) {
-          head.value = value;
-          break;
-        } else if (head.next == null) {
-          head.next = new HashEntry(key, value);
-          console.log(String(key) + ", " + String(value) + " - inserted.");
-          break;
-        }
-        head = head.next;
-      }
-    }
-
-    this.size += 1;
-    let load_factor = Number(this.size) / Number(this.slots);
-    //Checks if 60% of the entries in table are filled, threshold = 0.6
-    if (load_factor >= this.threshold) {
-      this.resize();
-    }
-  }
-
-  //Return a value for a given key
-  search(key) {
-    //Find the node with the given key
-    let b_Index = this.getIndex(key);
-    let head = this.bucket[b_Index];
-    //Search key in the slots
-    if (head != null) {
-      while (head != null) {
-        if (head.key === key) {
-          return head.value;
-        }
-        head = head.next;
-      }
-    }
-    //If key not found
-    console.log("Key not found");
-    return null;
-  }
-
-  //Remove a value based on a key
-  deleteVal(key) {
-    //Find index
-    let b_Index = this.getIndex(key);
-    let head = this.bucket[b_Index];
-    //If key exists at first slot
-    if (head.key === key) {
-      this.bucket[b_Index] = head.next;
-      console.log("Key deleted");
-      this.size -= 1;
-      return this;
-    }
-    //Find the key in slots
-    let prev = null;
-    while (head != null) {
-      //If key exists
-      if (head.key === key) {
-        prev.next = head.next;
-        console.log("Key deleted");
-        this.size -= 1;
-        return this;
-      }
-      //Else keep moving in chain
-      prev = head;
-      head = head.next;
-    }
-    //If key does not exist
-    console.log("Key not found");
-    return null;
-  }
-
-  resize() {
-    let new_slots = this.slots * 2;
-    let new_bucket = [];
-    for (var n = 0; n < new_slots; n++) {
-      new_bucket[n] = null;
-    }
-    // rehash all items into new slots
-    for (var i = 0; i < this.bucket.length; i++) {
-      let head = this.bucket[i];
-      while (head != null) {
-        let new_index = this.getIndex(head.key);
-        if (new_bucket[new_index] == null) {
-          new_bucket[new_index] = new HashEntry(head.key, head.value);
-        } else {
-          let node = new_bucket[new_index];
-          while (node != null) {
-            if (node.key === head.key) {
-              node.value = head.value;
-              node = null;
-            } else if (node.next == null) {
-              node.next = new HashEntry(head.key, head.value);
-              node = null;
-            } else {
-              node = node.next;
-            }
-          }
-        }
-        head = head.next;
-      }
-    }
-    this.bucket = new_bucket;
-    this.slots = new_slots;
-  }
-}
 class Node {
   constructor(data) {
     this.data = data;
@@ -179,8 +29,8 @@ class LinkedList {
     } else {
       let temp = this.head;
       while (temp != null) {
-        //process.stdout.write(String(temp.data));
-        //process.stdout.write(" -> ");
+        process.stdout.write(String(temp.data));
+        process.stdout.write(" -> ");
         temp = temp.nextElement;
       }
       console.log("null");
@@ -240,7 +90,7 @@ class LinkedList {
 
     //Traverse the list until you find the value or reach the end
     while (currentNode != null) {
-      if (currentNode.data == value) {
+      if (currentNode.data === value) {
         return true; //value found
       }
       currentNode = currentNode.nextElement;
@@ -272,15 +122,15 @@ class LinkedList {
     //else get pointer to head
     let currentNode = this.head;
     // if first node's is the node to be deleted, delete it and return true
-    if (currentNode.data == value) {
+    if (currentNode.data === value) {
       this.head = currentNode.nextElement;
       return true;
     }
 
     // else traverse the list
-    while (currentNode.nextElement != null) {
+    while (currentNode.nextElement !== null) {
       // if a node whose next node has the value as data, is found, delete it from the list and return true
-      if (currentNode.nextElement.data == value) {
+      if (currentNode.nextElement.data === value) {
         currentNode.nextElement = currentNode.nextElement.nextElement;
         return true;
       }
@@ -311,19 +161,103 @@ class LinkedList {
     return this;
   }
 }
-
-function unionList(list1, list2) {
-  let ht = new HashTable();
-  let list1Iter = list1.getHead();
-  while (list1Iter !== null) {
-    ht.insert(list1Iter.data, 1);
-    list1Iter = list1Iter.nextElement;
+class Queue {
+  constructor(mySize) {
+    this.items = [];
+    this.size = mySize;
+    this.front = 0;
+    this.back = -1;
   }
-  let list2Iter = list2.getHead();
-  while (list2Iter !== null) {
-    if (ht.search(list2Iter.data) === null) {
-      list1.insertAtHead(list2Iter.data);
+
+  isFull() {
+    return this.items.length >= this.size;
+  }
+
+  isEmpty() {
+    return this.items.length === 0;
+  }
+
+  getFront() {
+    if (this.items.length !== 0) {
+      return this.items[0];
+    } else {
+      console.log("No elements in the queue");
     }
-    list2Iter = list2Iter.nextElement;
+  }
+
+  enqueue(element) {
+    if (this.items.length >= this.size) {
+      console.log("Queue is full");
+    } else {
+      this.items.push(element);
+    }
+  }
+
+  dequeue() {
+    if (this.items.length === 0) {
+      console.log("No elements");
+    } else {
+      return this.items.shift();
+    }
   }
 }
+
+class Graph {
+  constructor(vertices) {
+    this.vertices = vertices;
+    this.list = [];
+    for (var i = 0; i < vertices; i++) {
+      var temp = new LinkedList();
+      this.list.push(temp);
+    }
+  }
+  addEdge(source, destination) {
+    if (source < this.vertices && destination < this.vertices) {
+      this.list[source].insertAtHead(destination);
+    }
+    return this;
+  }
+  printGraph() {
+    console.log("====Graph======");
+    for (var i = 0; i < this.list.length; i++) {
+      console.log(i);
+      var temp = this.list[i].getHead();
+      while (temp !== null) {
+        console.log(temp.data);
+        temp = temp.nextElement;
+      }
+      console.log(null);
+      console.log("=====");
+    }
+  }
+}
+
+function checkPath(g, source, destination) {
+  let visited = [];
+  for (var i = 0; i < g.vertices; i++) {
+    visited.push(false);
+  }
+  let queue = new Queue();
+  queue.enqueue(source);
+  visited[source] = true;
+  while (queue.isEmpty() === false) {
+    let currentNode = queue.dequeue();
+    let temp = g.list[currentNode].getHead();
+    while (temp !== null) {
+      if (temp.data === destination) {
+        return "path";
+      } else {
+        queue.enqueue(temp.data);
+        visited[temp.data] = true;
+      }
+      temp = temp.nextElement;
+    }
+  }
+  return "no path";
+}
+let g = new Graph(5);
+g.addEdge(0, 1);
+g.addEdge(1, 2);
+g.addEdge(1, 3);
+g.addEdge(3, 4);
+console.log(checkPath(g, 2, 4));
